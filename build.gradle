@@ -14,6 +14,7 @@ repositories {
     // for more information about repositories.
     maven { url "https://maven.terraformersmc.com/releases/" }
     maven { url "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
+    mavenLocal()
 }
 
 dependencies {
@@ -26,7 +27,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modRuntimeOnly "com.terraformersmc:modmenu:${project.mod_menu_version}"
     modImplementation "software.bernie.geckolib:geckolib-fabric-1.18:${project.geckolib_version}"
-
+    modImplementation ("website.skylorbeck.minecraft:SkylorLib:$skylib_version")
 }
 
 processResources {
