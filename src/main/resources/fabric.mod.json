@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "magehand",
+  "version": "${version}",
+  "name": "Magehand",
+  "description": "Item Automation with a Hostile Twist",
+  "authors": [
+    "Author: Skylor Beck",
+    "Patrons:",
+    "Ch'one No akumus",
+    "Striker99974"
+  ],
+  "contact": {
+    "homepage": "https://www.skylorbeck.website",
+    "source": "https://github.com/Skylortrexler/MageHand",
+    "repo": "https://github.com/Skylortrexler/MageHand",
+    "issues": "https://github.com/Skylortrexler/MageHand/issues"
+  },
+  "license": "LGPL-3.0",
+  "icon": "assets/magehand/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "website.skylorbeck.magehand.client.MagehandClient"
+    ],
+    "main": [
+      "website.skylorbeck.magehand.Magehand"
+    ]
+  },
+  "mixins": [
+    "magehand.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.12.12",
+    "fabric": "*",
+    "minecraft": "1.18.1"
+  }
+}
