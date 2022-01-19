@@ -21,8 +21,11 @@ public class MageHandIronEntity extends MageHandFriendlyAbstractEntity{
         this.goalSelector.add(1,new MageHandAttackGoal(this,1f,false));
         this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, HostileEntity.class, true,true));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, MageHandHostileEntity.class, true,true));
         super.initGoals();
     }
+
+
 
     @Override
     public Identifier getTexture() {
