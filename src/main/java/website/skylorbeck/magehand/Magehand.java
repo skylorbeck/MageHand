@@ -21,6 +21,12 @@ public class Magehand implements ModInitializer {
                         .add(EntityAttributes.GENERIC_MAX_HEALTH, 10f)
                         .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25f)
         );
+        FabricDefaultAttributeRegistry.register(Declarar.MAGE_HAND_COPPER_ENTITY_TYPE,
+                MobEntity.createMobAttributes()
+                        .add(EntityAttributes.GENERIC_ATTACK_DAMAGE,5f)
+                        .add(EntityAttributes.GENERIC_MAX_HEALTH, 10f)
+                        .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25f)
+        );
         BiomeModifications.addSpawn(BiomeSelectors.foundInTheNether(), SpawnGroup.MONSTER,Declarar.MAGE_HAND_HOSTILE_ENTITY_TYPE,50,2,4);
     }
 }

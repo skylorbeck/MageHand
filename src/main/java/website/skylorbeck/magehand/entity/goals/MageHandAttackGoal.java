@@ -1,6 +1,7 @@
-package website.skylorbeck.magehand.entity;
+package website.skylorbeck.magehand.entity.goals;
 
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+import website.skylorbeck.magehand.entity.MageHandHostileEntity;
 
 public class MageHandAttackGoal extends MeleeAttackGoal {
     private final MageHandHostileEntity mageHandHostile;

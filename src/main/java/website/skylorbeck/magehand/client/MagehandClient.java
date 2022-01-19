@@ -12,5 +12,6 @@ public class MagehandClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         EntityRendererRegistry.INSTANCE.register(Declarar.MAGE_HAND_HOSTILE_ENTITY_TYPE, MageHandRenderer::new);
+        EntityRendererRegistry.INSTANCE.register(Declarar.MAGE_HAND_COPPER_ENTITY_TYPE, MageHandRenderer::new);
     }
 }

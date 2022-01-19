@@ -1,15 +1,17 @@
 package website.skylorbeck.magehand.entity;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -20,26 +22,43 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public abstract class MageHandAbstractEntity extends HostileEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
     private static final TrackedData<Integer> trackedTarget = DataTracker.registerData(MageHandAbstractEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    private BlockPos startingPos;
+
     protected MageHandAbstractEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
+    }
 
+    @Nullable
+    @Override
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        this.startingPos = this.getBlockPos();
+        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        nbt.putDouble("startX",this.startingPos.getX());
+        nbt.putDouble("startY",this.startingPos.getY());
+        nbt.putDouble("startZ",this.startingPos.getZ());
+        super.writeCustomDataToNbt(nbt);
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        this.startingPos = new BlockPos(nbt.getDouble("startX"),nbt.getDouble("startY"),nbt.getDouble("startZ"));
+        super.readCustomDataFromNbt(nbt);
     }
 
     public abstract Identifier getTexture();
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(5, new GoToWalkTargetGoal(this, 1.0));
-        this.goalSelector.add(7, new WanderAroundFarGoal(this, 1.0, 0.0f));
         this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0f));
         this.goalSelector.add(8, new LookAroundGoal(this));
-        this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
         super.initGoals();
     }
 
@@ -101,5 +120,9 @@ public abstract class MageHandAbstractEntity extends HostileEntity implements IA
     @Override
     public AnimationFactory getFactory() {
         return this.factory;
+    }
+
+    public BlockPos getStartingPos() {
+        return this.startingPos;
     }
 }
