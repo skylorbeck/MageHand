@@ -14,7 +14,7 @@ public class MageHandModel extends AnimatedGeoModel<MageHandAbstractEntity> {
 
     @Override
     public Identifier getTextureLocation(MageHandAbstractEntity object) {
-        return Declarar.getIdentifier("textures/hand.png");
+        return object.getTexture();
     }
 
     @Override
