@@ -6,14 +6,16 @@ import net.minecraft.entity.ai.goal.GoToWalkTargetGoal;
 import net.minecraft.entity.ai.goal.RevengeGoal;
 import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import website.skylorbeck.magehand.Declarar;
 import website.skylorbeck.magehand.entity.goals.MageHandAttackGoal;
 
 public class MageHandHostileEntity extends MageHandAbstractEntity{
-    public MageHandHostileEntity(EntityType<? extends HostileEntity> entityType, World world) {
+    public MageHandHostileEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -25,6 +27,20 @@ public class MageHandHostileEntity extends MageHandAbstractEntity{
         this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true,true));
         super.initGoals();
+    }
+    @Override
+    protected boolean isDisallowedInPeaceful() {
+        return true;
+    }
+
+    @Override
+    public SoundCategory getSoundCategory() {
+        return SoundCategory.HOSTILE;
+    }
+
+    @Override
+    protected boolean shouldDropXp() {
+        return true;
     }
 
     @Override

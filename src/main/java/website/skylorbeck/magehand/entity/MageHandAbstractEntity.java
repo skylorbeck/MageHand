@@ -6,6 +6,7 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
@@ -23,12 +24,12 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 
-public abstract class MageHandAbstractEntity extends HostileEntity implements IAnimatable {
+public abstract class MageHandAbstractEntity extends PathAwareEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
     private static final TrackedData<Integer> trackedTarget = DataTracker.registerData(MageHandAbstractEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private BlockPos startingPos;
 
-    protected MageHandAbstractEntity(EntityType<? extends HostileEntity> entityType, World world) {
+    protected MageHandAbstractEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -92,21 +93,23 @@ public abstract class MageHandAbstractEntity extends HostileEntity implements IA
 
     private <E extends IAnimatable> PlayState locomotion_predicate(AnimationEvent<E> event) {
         MageHandAbstractEntity mageHand = (MageHandAbstractEntity) event.getAnimatable();
-        if (mageHand.hasTrackedTarget()){
-            Entity target = mageHand.world.getEntityById(mageHand.getTrackedTarget());
-            float distance = mageHand.distanceTo(target);
-            if (distance>8){
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.point", true));
-            } else if (distance<3){
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.punch", true));
+        if (mageHand != null) {
+            if (mageHand.hasTrackedTarget()) {
+                Entity target = mageHand.world.getEntityById(mageHand.getTrackedTarget());
+                float distance = mageHand.distanceTo(target);
+                if (distance > 8) {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.point", true));
+                } else if (distance < 3) {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.punch", true));
+                } else {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.fist", true));
+                }
             } else {
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.fist", true));
-            }
-        } else {
-            if (mageHand.world.random.nextFloat() <= 0.05f) {
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.stretch", true));
-            } else {
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.idle", true));
+                if (mageHand.world.random.nextFloat() <= 0.05f) {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.stretch", true));
+                } else {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.idle", true));
+                }
             }
         }
         return PlayState.CONTINUE;

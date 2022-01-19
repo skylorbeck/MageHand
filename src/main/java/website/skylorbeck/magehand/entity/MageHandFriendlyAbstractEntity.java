@@ -3,6 +3,7 @@ package website.skylorbeck.magehand.entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Identifier;
@@ -16,7 +17,7 @@ import website.skylorbeck.magehand.entity.goals.ReturnToStartGoal;
 import java.util.Random;
 
 public abstract class MageHandFriendlyAbstractEntity extends MageHandAbstractEntity{
-    public MageHandFriendlyAbstractEntity(EntityType<? extends HostileEntity> entityType, World world) {
+    public MageHandFriendlyAbstractEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
     }
     @Override
@@ -28,21 +29,6 @@ public abstract class MageHandFriendlyAbstractEntity extends MageHandAbstractEnt
     protected void initGoals() {
         this.goalSelector.add(7, new ReturnToStartGoal(this,1,40));
         super.initGoals();
-    }
-
-    @Override
-    public SoundCategory getSoundCategory() {
-        return SoundCategory.NEUTRAL;
-    }
-
-    @Override
-    protected boolean isDisallowedInPeaceful() {
-        return false;
-    }
-
-    @Override
-    public boolean isAngryAt(PlayerEntity player) {
-        return false;
     }
 
     @Override

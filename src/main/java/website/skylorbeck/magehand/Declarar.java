@@ -7,6 +7,7 @@ import net.minecraft.util.registry.Registry;
 import website.skylorbeck.magehand.entity.MageHandAbstractEntity;
 import website.skylorbeck.magehand.entity.MageHandCopperEntity;
 import website.skylorbeck.magehand.entity.MageHandHostileEntity;
+import website.skylorbeck.magehand.entity.MageHandIronEntity;
 
 public class Declarar {
     public static String MODID = "magehand";
@@ -23,4 +24,10 @@ public class Declarar {
                     .setDimensions(0.5f, 0.5f)
                     .maxTrackingRange(10)
                     .build(MAGE_HAND_COPPER_ID.toString()));
+    public static Identifier MAGE_HAND_IRON_ID = getIdentifier("iron");
+    public static final EntityType<MageHandIronEntity> MAGE_HAND_IRON_ENTITY_TYPE = Registry.register(Registry.ENTITY_TYPE, MAGE_HAND_IRON_ID,
+            EntityType.Builder.create(MageHandIronEntity::new, SpawnGroup.MISC)
+                    .setDimensions(0.5f, 0.5f)
+                    .maxTrackingRange(10)
+                    .build(MAGE_HAND_IRON_ID.toString()));
 }

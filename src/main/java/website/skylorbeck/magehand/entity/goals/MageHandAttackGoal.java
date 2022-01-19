@@ -1,15 +1,16 @@
 package website.skylorbeck.magehand.entity.goals;
 
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+import website.skylorbeck.magehand.entity.MageHandAbstractEntity;
 import website.skylorbeck.magehand.entity.MageHandHostileEntity;
 
 public class MageHandAttackGoal extends MeleeAttackGoal {
-    private final MageHandHostileEntity mageHandHostile;
+    private final MageHandAbstractEntity mageHand;
     private int ticks;
 
-    public MageHandAttackGoal(MageHandHostileEntity mageHandHostile, double speed, boolean pauseWhenMobIdle) {
-        super(mageHandHostile, speed, pauseWhenMobIdle);
-        this.mageHandHostile = mageHandHostile;
+    public MageHandAttackGoal(MageHandAbstractEntity mageHand, double speed, boolean pauseWhenMobIdle) {
+        super(mageHand, speed, pauseWhenMobIdle);
+        this.mageHand = mageHand;
     }
 
     @Override
@@ -21,7 +22,7 @@ public class MageHandAttackGoal extends MeleeAttackGoal {
     @Override
     public void stop() {
         super.stop();
-        this.mageHandHostile.setAttacking(false);
+        this.mageHand.setAttacking(false);
     }
 
     @Override
@@ -29,9 +30,9 @@ public class MageHandAttackGoal extends MeleeAttackGoal {
         super.tick();
         ++this.ticks;
         if (this.ticks >= 5 && this.getCooldown() < this.getMaxCooldown() / 2) {
-            this.mageHandHostile.setAttacking(true);
+            this.mageHand.setAttacking(true);
         } else {
-            this.mageHandHostile.setAttacking(false);
+            this.mageHand.setAttacking(false);
         }
     }
 }
