@@ -2,16 +2,17 @@ package website.skylorbeck.magehand.entity;
 
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.goal.LookAroundGoal;
+import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.SwordItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -32,6 +33,7 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
     private final AnimationFactory factory = new AnimationFactory(this);
     private static final TrackedData<Integer> trackedTarget = DataTracker.registerData(MageHandAbstractEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private BlockPos startingPos;
+
 
     protected MageHandAbstractEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
@@ -94,14 +96,13 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
         return false;
     }
 
+
     public boolean hasTrackedTarget(){
         return !this.dataTracker.get(trackedTarget).equals(0);
     }
     public int getTrackedTarget(){
         return this.dataTracker.get(trackedTarget);
     }
-
-
 
     //gecko
     @Override
@@ -112,19 +113,34 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
 
     private <E extends IAnimatable> PlayState locomotion_predicate(AnimationEvent<E> event) {
         MageHandAbstractEntity mageHand = (MageHandAbstractEntity) event.getAnimatable();
+
         if (mageHand != null) {
             if (mageHand.hasTrackedTarget()) {
                 Entity target = mageHand.world.getEntityById(mageHand.getTrackedTarget());
                 float distance = mageHand.distanceTo(target);
-                if (distance > 8) {
-                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.point", true));
-                } else if (distance < 3) {
-                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.punch", true));
+                if (mageHand.getMainHandStack().isEmpty()) {
+                    if (distance > 8) {
+                        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.point", true));
+                    } else if (distance < 3) {
+                        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.punch", true));
+                    } else {
+                        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.fist", true));
+                    }
                 } else {
+                    if (distance < 3) {
+                        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.slash", true));
+                    } else {
+                        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.fist", true));
+                    }
+                }
+            } else if (!mageHand.getMainHandStack().isEmpty()) {
+                if (mageHand.getMainHandStack().getItem() instanceof SwordItem){
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.fist", true));
+                } else {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.holdingitem", true));
                 }
             } else {
-                if (mageHand.world.random.nextFloat() <= 0.05f) {
+                if (mageHand.random.nextFloat()<= 0.05f) {
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.stretch", true));
                 } else {
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.idle", true));

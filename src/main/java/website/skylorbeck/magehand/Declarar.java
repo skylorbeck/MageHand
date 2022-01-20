@@ -4,7 +4,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import website.skylorbeck.magehand.entity.MageHandAbstractEntity;
 import website.skylorbeck.magehand.entity.MageHandCopperEntity;
 import website.skylorbeck.magehand.entity.MageHandHostileEntity;
 import website.skylorbeck.magehand.entity.MageHandIronEntity;

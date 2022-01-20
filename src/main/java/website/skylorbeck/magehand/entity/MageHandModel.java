@@ -1,10 +1,10 @@
 package website.skylorbeck.magehand.entity;
 
 import net.minecraft.util.Identifier;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import website.skylorbeck.magehand.Declarar;
-import website.skylorbeck.magehand.Magehand;
 
 public class MageHandModel extends AnimatedGeoModel<MageHandAbstractEntity> {
     @Override
@@ -23,12 +23,11 @@ public class MageHandModel extends AnimatedGeoModel<MageHandAbstractEntity> {
     }
 
     @Override
-    public void setLivingAnimations(MageHandAbstractEntity entity, Integer uniqueID) {
-        super.setLivingAnimations(entity, uniqueID);
+    public void setLivingAnimations(MageHandAbstractEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+        super.setLivingAnimations(entity, uniqueID, customPredicate);
+//        IBone sword = this.getAnimationProcessor().getBone("sword");
+//        ItemStack itemstack = entity.getMainHandStack();
+//        sword.setHidden(!(itemstack.getItem() instanceof SwordItem));
     }
 
-    @Override
-    public IBone getBone(String boneName) {
-        return super.getBone(boneName);
-    }
 }

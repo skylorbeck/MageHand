@@ -7,8 +7,6 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.Biome;
 import software.bernie.geckolib3.GeckoLib;
 
 public class Magehand implements ModInitializer {
