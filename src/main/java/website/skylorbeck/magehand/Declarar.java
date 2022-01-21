@@ -14,19 +14,19 @@ public class Declarar {
     public static Identifier MAGE_HAND_HOSTILE_ID = getIdentifier("hostile");
     public static final EntityType<MageHandHostileEntity> MAGE_HAND_HOSTILE_ENTITY_TYPE = Registry.register(Registry.ENTITY_TYPE, MAGE_HAND_HOSTILE_ID,
             EntityType.Builder.create(MageHandHostileEntity::new, SpawnGroup.MONSTER)
-                    .setDimensions(0.5f, 0.5f)
+                    .setDimensions(0.5f, 1f)
                     .maxTrackingRange(10)
                     .build(MAGE_HAND_HOSTILE_ID.toString()));
     public static Identifier MAGE_HAND_COPPER_ID = getIdentifier("copper");
     public static final EntityType<MageHandCopperEntity> MAGE_HAND_COPPER_ENTITY_TYPE = Registry.register(Registry.ENTITY_TYPE, MAGE_HAND_COPPER_ID,
             EntityType.Builder.create(MageHandCopperEntity::new, SpawnGroup.MISC)
-                    .setDimensions(0.5f, 0.5f)
+                    .setDimensions(0.5f, 1f)
                     .maxTrackingRange(10)
                     .build(MAGE_HAND_COPPER_ID.toString()));
     public static Identifier MAGE_HAND_IRON_ID = getIdentifier("iron");
     public static final EntityType<MageHandIronEntity> MAGE_HAND_IRON_ENTITY_TYPE = Registry.register(Registry.ENTITY_TYPE, MAGE_HAND_IRON_ID,
             EntityType.Builder.create(MageHandIronEntity::new, SpawnGroup.MISC)
-                    .setDimensions(0.5f, 0.5f)
+                    .setDimensions(0.5f, 1f)
                     .maxTrackingRange(10)
                     .build(MAGE_HAND_IRON_ID.toString()));
 }

@@ -21,7 +21,7 @@ public class MageHandCopperEntity extends MageHandFriendlyAbstractEntity{
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(1,new MageHandPutItemInChestGoal(this,1,16));
+        this.goalSelector.add(1,new MageHandPutItemInChestGoal(this,1,20));
         this.goalSelector.add(2,new MageHandPickUpItemGoal(this,1,16));
         super.initGoals();
     }

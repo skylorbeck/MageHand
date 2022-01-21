@@ -7,6 +7,7 @@ import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
+import net.minecraft.entity.ai.pathing.MobNavigation;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
@@ -47,7 +48,7 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
     @Nullable
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        this.startingPos = this.getBlockPos();
+        this.startingPos = this.getBlockPos().add(0.5,0.5,0.5);
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
@@ -107,7 +108,7 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
     @Override
     public void tick() {
         this.goalSelector.getRunningGoals().forEach((goal)-> {
-            //Logger.getGlobal().log(Level.SEVERE,goal.getGoal().toString())
+//            Logger.getGlobal().log(Level.SEVERE,goal.getGoal().toString());
         });
         super.tick();
     }

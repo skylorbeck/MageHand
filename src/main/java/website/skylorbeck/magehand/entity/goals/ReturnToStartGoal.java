@@ -15,7 +15,7 @@ public class ReturnToStartGoal extends MoveToTargetPosGoal {
     private final MageHandAbstractEntity hand;
 
     public ReturnToStartGoal(MageHandAbstractEntity hand, double speed, int range) {
-        super(hand, speed, range, 6);
+        super(hand, speed, range, 10);
         this.lowestY = -2;
         this.hand = hand;
         this.targetPos= hand.getStartingPos();
@@ -44,7 +44,7 @@ public class ReturnToStartGoal extends MoveToTargetPosGoal {
 
     @Override
     protected boolean isTargetPos(WorldView world, BlockPos pos) {
-//        return pos.isWithinDistance(startingPos,1);
+//        return pos.isWithinDistance(hand.getStartingPos(),1);
         return true;
     }
 }
