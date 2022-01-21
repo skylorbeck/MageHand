@@ -1,5 +1,6 @@
 package website.skylorbeck.magehand.entity;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
@@ -100,8 +101,14 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
     }
 
     @Override
+    protected void fall(double heightDifference, boolean onGround, BlockState landedState, BlockPos landedPosition) {
+    }
+
+    @Override
     public void tick() {
-        //this.goalSelector.getRunningGoals().forEach((goal)->Logger.getGlobal().log(Level.SEVERE,goal.getGoal().toString()));
+        this.goalSelector.getRunningGoals().forEach((goal)-> {
+            //Logger.getGlobal().log(Level.SEVERE,goal.getGoal().toString())
+        });
         super.tick();
     }
 

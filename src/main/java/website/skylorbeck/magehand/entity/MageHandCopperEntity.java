@@ -11,6 +11,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import website.skylorbeck.magehand.Declarar;
+import website.skylorbeck.magehand.entity.goals.MageHandPickUpItemGoal;
 import website.skylorbeck.magehand.entity.goals.MageHandPutItemInChestGoal;
 
 public class MageHandCopperEntity extends MageHandFriendlyAbstractEntity{
@@ -20,7 +21,8 @@ public class MageHandCopperEntity extends MageHandFriendlyAbstractEntity{
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(1,new MageHandPutItemInChestGoal(this,16,1));
+        this.goalSelector.add(1,new MageHandPutItemInChestGoal(this,1,16));
+        this.goalSelector.add(2,new MageHandPickUpItemGoal(this,1,16));
         super.initGoals();
     }
 
