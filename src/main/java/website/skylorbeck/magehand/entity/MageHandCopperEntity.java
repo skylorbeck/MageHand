@@ -2,6 +2,8 @@ package website.skylorbeck.magehand.entity;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.goal.RevengeGoal;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -10,7 +12,9 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import website.skylorbeck.magehand.Declarar;
+import website.skylorbeck.magehand.entity.goals.MageHandCallForHelpGoal;
 import website.skylorbeck.magehand.entity.goals.MageHandPickUpItemGoal;
 import website.skylorbeck.magehand.entity.goals.MageHandPutItemInChestGoal;
 
@@ -21,14 +25,19 @@ public class MageHandCopperEntity extends MageHandFriendlyAbstractEntity{
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(1,new MageHandPutItemInChestGoal(this,1,20));
-        this.goalSelector.add(2,new MageHandPickUpItemGoal(this,1,16));
+        this.goalSelector.add(1,new MageHandPutItemInChestGoal(this,2,20));
+        this.goalSelector.add(2,new MageHandPickUpItemGoal(this,2,16));
+        this.targetSelector.add(1, new MageHandCallForHelpGoal(this).setGroupRevenge(MageHandCopperEntity.class,MageHandHostileEntity.class));
         super.initGoals();
     }
 
     @Override
     public Identifier getTexture() {
         return Declarar.getIdentifier("textures/copper.png");
+    }
+
+    @Override
+    public void setTarget(@Nullable LivingEntity target) {
     }
 
     @Override

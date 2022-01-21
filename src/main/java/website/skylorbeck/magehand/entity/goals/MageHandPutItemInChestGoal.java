@@ -69,13 +69,13 @@ extends MoveToTargetPosGoal {
                         if (blockEntity instanceof SidedInventory sidedInventory) {
                             int[] is = sidedInventory.getAvailableSlots(Direction.UP);
                             for (int i = 0; i < is.length && !itemStack.isEmpty(); ++i) {
-                                itemStack = transfer(sidedInventory, itemStack, is[i]);
+                                itemStack = transfer(sidedInventory, itemStack, is[i], Direction.UP);
                                 magehand.equipStack(EquipmentSlot.MAINHAND, itemStack);
                             }
                         } else if (blockEntity instanceof Inventory inventory) {
                             int sidedInventory = ((Inventory) blockEntity).size();
                             for (int is = 0; is < sidedInventory && !itemStack.isEmpty(); ++is) {
-                                itemStack = transfer(inventory, itemStack, is);
+                                itemStack = transfer(inventory, itemStack, is, Direction.DOWN);
                                 magehand.equipStack(EquipmentSlot.MAINHAND, itemStack);
                             }
                         }
@@ -85,9 +85,9 @@ extends MoveToTargetPosGoal {
         super.tick();
 
     }
-    private static ItemStack transfer(Inventory to, ItemStack stack, int slot) {
+    private static ItemStack transfer(Inventory to, ItemStack stack, int slot, Direction dir) {
         ItemStack itemStack = to.getStack(slot);
-        if (canInsert(to, stack, slot)) {
+        if (canInsert(to, stack, slot, dir)) {
             int j;
             boolean bl = false;
             if (itemStack.isEmpty()) {
@@ -106,11 +106,11 @@ extends MoveToTargetPosGoal {
         }
         return stack;
     }
-    private static boolean canInsert(Inventory inventory, ItemStack stack, int slot) {
+    private static boolean canInsert(Inventory inventory, ItemStack stack, int slot, Direction dir) {
         if (!inventory.isValid(slot, stack)) {
             return false;
         }
-        return !(inventory instanceof SidedInventory) || ((SidedInventory)inventory).canInsert(slot, stack, Direction.DOWN);
+        return !(inventory instanceof SidedInventory) || ((SidedInventory)inventory).canInsert(slot, stack, dir);
     }
     private static boolean canMergeItems(ItemStack first, ItemStack second) {
         if (!first.isOf(second.getItem())) {
