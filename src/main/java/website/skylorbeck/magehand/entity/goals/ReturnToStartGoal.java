@@ -11,8 +11,7 @@ import website.skylorbeck.magehand.entity.MageHandAbstractEntity;
 
 import java.util.EnumSet;
 
-public class ReturnToStartGoal
-extends MoveToTargetPosGoal {
+public class ReturnToStartGoal extends MoveToTargetPosGoal {
     private final MageHandAbstractEntity hand;
 
     public ReturnToStartGoal(MageHandAbstractEntity hand, double speed, int range) {
@@ -36,6 +35,11 @@ extends MoveToTargetPosGoal {
     @Override
     public double getDesiredDistanceToTarget() {
         return 0f;
+    }
+
+    @Override
+    public boolean shouldContinue() {
+        return this.hand.getMainHandStack().isEmpty();
     }
 
     @Override
