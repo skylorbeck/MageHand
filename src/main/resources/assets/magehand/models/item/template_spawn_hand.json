@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "magehand:spawn_hand",
+        "layer1": "magehand:spawn_hand_overlay"
+    }
+}
