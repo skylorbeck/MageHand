@@ -32,5 +32,9 @@ public class Magehand implements ModInitializer {
         FabricDefaultAttributeRegistry.register(Declarar.MAGE_HAND_IRON_ENTITY_TYPE,
                 MageHandIronEntity.createMobAttributes());
         Registrar.regItem("iron_spawner",Declarar.MAGE_HAND_IRON_SPAWNER,Declarar.MODID);
+        
+        FabricDefaultAttributeRegistry.register(Declarar.MAGE_HAND_GOLD_ENTITY_TYPE,
+                MageHandAbstractEntity.createMobAttributes());
+        Registrar.regItem("gold_spawner",Declarar.MAGE_HAND_GOLD_SPAWNER,Declarar.MODID);
     }
 }

@@ -26,8 +26,8 @@ public class MageHandIronEntity extends MageHandFriendlyAbstractEntity{
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(1,new MageHandAttackGoal(this,1f,false));
-        this.targetSelector.add(1, new RevengeGoal(this,PlayerEntity.class).setGroupRevenge());
+        this.goalSelector.add(1,new MageHandAttackGoal(this,1.25f,false));
+        this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, HostileEntity.class, true,true));
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, MageHandHostileEntity.class, true,true));
         super.initGoals();
@@ -62,7 +62,7 @@ public class MageHandIronEntity extends MageHandFriendlyAbstractEntity{
     }
 
     public static DefaultAttributeContainer.Builder createMobAttributes() {
-        return MobEntity.createLivingAttributes()
+        return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 15.0)
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 50.0)
                 .add(EntityAttributes.GENERIC_ARMOR, 5f)

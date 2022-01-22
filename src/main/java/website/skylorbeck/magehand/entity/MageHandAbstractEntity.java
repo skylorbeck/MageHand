@@ -40,6 +40,7 @@ import java.util.logging.Logger;
 public abstract class MageHandAbstractEntity extends PathAwareEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
     private static final TrackedData<Integer> trackedTarget = DataTracker.registerData(MageHandAbstractEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    private static final TrackedData<Integer> stretchTicks = DataTracker.registerData(MageHandAbstractEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private BlockPos startingPos;
 
 
@@ -81,6 +82,7 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
     @Override
     protected void initDataTracker() {
         this.dataTracker.startTracking(trackedTarget,0);
+        this.dataTracker.startTracking(stretchTicks,0);
         super.initDataTracker();
     }
 
@@ -113,17 +115,37 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
         this.goalSelector.getRunningGoals().forEach((goal)-> {
 //            Logger.getGlobal().log(Level.SEVERE,goal.getGoal().toString());
         });
+        if (!isStretching() && this.random.nextFloat()<0.005f) {
+            this.dataTracker.set(stretchTicks,50);
+        } else if (isStretching()){
+            this.dataTracker.set(stretchTicks,this.dataTracker.get(stretchTicks)-1);
+        }
         super.tick();
     }
 
+    @Override
+    public boolean isFireImmune() {
+        return true;
+    }
+
+    @Override
+    public boolean isInvulnerableTo(DamageSource damageSource) {
+        if (damageSource.isFire()||damageSource.equals(DamageSource.HOT_FLOOR)||damageSource.equals(DamageSource.LAVA)||damageSource.equals(DamageSource.ON_FIRE)||damageSource.equals(DamageSource.IN_FIRE))
+            return true;
+        return super.isInvulnerableTo(damageSource);
+    }
+
     public static DefaultAttributeContainer.Builder createMobAttributes() {
-        return MobEntity.createLivingAttributes()
+        return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5f)
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 10f)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25f)
                 .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.4);
     }
 
+    public boolean isStretching(){
+        return !this.dataTracker.get(stretchTicks).equals(0);
+    }
     public boolean hasTrackedTarget(){
         return !this.dataTracker.get(trackedTarget).equals(0);
     }
@@ -161,13 +183,13 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
                     }
                 }
             } else if (!mageHand.getMainHandStack().isEmpty()) {
-                if (mageHand.getMainHandStack().getItem() instanceof SwordItem){
+                if (mageHand.getMainHandStack().getItem() instanceof SwordItem) {
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.fist", true));
                 } else {
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.holdingitem", true));
                 }
             } else {
-                if (mageHand.random.nextFloat()<= 0.05f) {
+                if (isStretching()) {
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.stretch", true));
                 } else {
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.idle", true));

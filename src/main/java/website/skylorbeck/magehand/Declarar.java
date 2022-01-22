@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import website.skylorbeck.magehand.entity.MageHandCopperEntity;
+import website.skylorbeck.magehand.entity.MageHandGoldEntity;
 import website.skylorbeck.magehand.entity.MageHandHostileEntity;
 import website.skylorbeck.magehand.entity.MageHandIronEntity;
 import website.skylorbeck.magehand.item.MageHandSpawner;
@@ -48,5 +49,13 @@ public class Declarar {
                     .maxTrackingRange(10)
                     .build(MAGE_HAND_IRON_ID.toString()));
     public static final Item MAGE_HAND_IRON_SPAWNER = new MageHandSpawner(MAGE_HAND_IRON_ENTITY_TYPE, 8488329, 12632256, new FabricItemSettings().group(mageHand).maxCount(16).rarity(Rarity.RARE));
+
+    public static Identifier MAGE_HAND_GOLD_ID = getIdentifier("gold");
+    public static final EntityType<MageHandGoldEntity> MAGE_HAND_GOLD_ENTITY_TYPE = Registry.register(Registry.ENTITY_TYPE, MAGE_HAND_GOLD_ID,
+            EntityType.Builder.create(MageHandGoldEntity::new, SpawnGroup.MISC)
+                    .setDimensions(0.25f, 1f)
+                    .maxTrackingRange(10)
+                    .build(MAGE_HAND_GOLD_ID.toString()));
+    public static final Item MAGE_HAND_GOLD_SPAWNER = new MageHandSpawner(MAGE_HAND_GOLD_ENTITY_TYPE, 8214022, 13209888, new FabricItemSettings().group(mageHand).maxCount(16).rarity(Rarity.UNCOMMON));
 
 }
