@@ -55,7 +55,7 @@ public class MageHandIronEntity extends MageHandFriendlyAbstractEntity{
 
     @Override
     protected boolean shouldDropLoot() {
-        return  true;
+        return true;
     }
 
     @Override
