@@ -15,18 +15,16 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import website.skylorbeck.magehand.Declarar;
-import website.skylorbeck.magehand.entity.goals.MageHandCallForHelpGoal;
-import website.skylorbeck.magehand.entity.goals.MageHandPickUpItemGoal;
-import website.skylorbeck.magehand.entity.goals.MageHandPutItemInChestGoal;
+import website.skylorbeck.magehand.entity.goals.*;
 
 public class MageHandGoldEntity extends MageHandFriendlyAbstractEntity{
-    private static final Item[] seedables = {
+    public static final Item[] seedables = {
             Items.POTATO,
             Items.CARROT,
             Items.BEETROOT_SEEDS,
             Items.WHEAT_SEEDS,
-            Items.MELON_SEEDS,
-            Items.PUMPKIN_SEEDS,
+//            Items.MELON_SEEDS,
+//            Items.PUMPKIN_SEEDS,
     };
     public MageHandGoldEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
@@ -34,6 +32,9 @@ public class MageHandGoldEntity extends MageHandFriendlyAbstractEntity{
 
     @Override
     protected void initGoals() {
+        this.goalSelector.add(1,new MageHandResupplySeedsGoal(this,1,16));
+        this.goalSelector.add(2,new MageHandHarvestPlantGoal(this,1,16));
+        this.goalSelector.add(3,new MageHandPlantSeedGoal(this,1,16));
         this.targetSelector.add(1, new MageHandCallForHelpGoal(this).setGroupRevenge(MageHandCopperEntity.class,MageHandGoldEntity.class,MageHandHostileEntity.class));
         super.initGoals();
     }

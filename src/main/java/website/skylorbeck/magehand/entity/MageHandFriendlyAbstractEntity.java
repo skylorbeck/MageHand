@@ -2,8 +2,10 @@ package website.skylorbeck.magehand.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import website.skylorbeck.magehand.Declarar;
@@ -24,6 +26,11 @@ public abstract class MageHandFriendlyAbstractEntity extends MageHandAbstractEnt
     protected void initGoals() {
         this.goalSelector.add(7, new ReturnToStartGoal(this,1,40));
         super.initGoals();
+    }
+    @Override
+    public void equipStack(EquipmentSlot slot, ItemStack stack) {
+        this.setEquipmentDropChance(EquipmentSlot.MAINHAND,100f);
+        super.equipStack(slot,stack);
     }
 
     @Override
