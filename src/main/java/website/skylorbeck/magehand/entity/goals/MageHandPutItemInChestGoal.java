@@ -24,7 +24,7 @@ public class MageHandPutItemInChestGoal
 extends MoveToTargetPosGoal {
     MageHandAbstractEntity magehand;
     public MageHandPutItemInChestGoal(MageHandAbstractEntity mageHand, double speed, int range) {
-        super(mageHand, speed, range,10);
+        super(mageHand, speed, range,4);
         this.magehand = mageHand;
     }
 

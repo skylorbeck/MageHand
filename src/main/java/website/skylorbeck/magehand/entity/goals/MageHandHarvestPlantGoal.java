@@ -25,14 +25,14 @@ extends MoveToTargetPosGoal {
     boolean reset = false;
 
     public MageHandHarvestPlantGoal(MageHandAbstractEntity mageHand, double speed, int range) {
-        super(mageHand, speed, range, 10);
+        super(mageHand, speed, range, 4);
         this.range = range;
         this.magehand = mageHand;
     }
 
     @Override
     public boolean shouldContinue() {
-        return !reset && super.shouldContinue();
+        return !this.targetPos.equals(BlockPos.ORIGIN) && !reset && super.shouldContinue();
     }
 
     @Override
@@ -52,20 +52,20 @@ extends MoveToTargetPosGoal {
 
     @Override
     public void tick() {
-        if (this.hasReached()) {
+//        if (this.hasReached()) {
             BlockPos.iterateOutwards(this.magehand.getBlockPos(), 1, 1, 1).forEach(blockPos -> {
                 if (isTargetPos(this.magehand.world,blockPos)) {
                     this.magehand.world.breakBlock(blockPos.up(),true);
                     this.reset = true;
                 }
             });
-        }
+//        }
         super.tick();
     }
 
     @Override
     protected boolean isTargetPos(WorldView world, BlockPos pos) {
         BlockState cropState = this.magehand.world.getBlockState(pos.up());
-        return world.getBlockState(pos).getBlock().equals(Blocks.FARMLAND) && cropState.getBlock() instanceof CropBlock cropBlock && cropBlock.isMature(cropState);
+        return pos.isWithinDistance(this.magehand.getStartingPos(),this.range) && world.getBlockState(pos).getBlock().equals(Blocks.FARMLAND) && cropState.getBlock() instanceof CropBlock cropBlock && cropBlock.isMature(cropState);
     }
 }

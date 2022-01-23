@@ -27,7 +27,7 @@ extends MoveToTargetPosGoal {
     int range = 16;
 
     public MageHandPlantSeedGoal(MageHandAbstractEntity mageHand, double speed, int range) {
-        super(mageHand, speed, range, 10);
+        super(mageHand, speed, range, 4);
         this.range = range;
         this.magehand = mageHand;
     }
@@ -54,12 +54,12 @@ extends MoveToTargetPosGoal {
 
     @Override
     public boolean shouldContinue() {
-        return !magehand.getMainHandStack().isEmpty() && this.tryingTime<=100 && super.shouldContinue();
+        return !this.targetPos.equals(BlockPos.ORIGIN) && !magehand.getMainHandStack().isEmpty() && this.tryingTime<=100 && super.shouldContinue();
     }
 
     @Override
     public void tick() {
-        if (this.hasReached()) {
+//        if (this.hasReached()) {
             ItemStack itemStack = magehand.getMainHandStack();
             BlockPos.iterateOutwards(this.magehand.getBlockPos(), 1, 1, 1).forEach(blockPos -> {
                 BlockState blockState = this.magehand.world.getBlockState(blockPos);
@@ -67,12 +67,12 @@ extends MoveToTargetPosGoal {
                     itemStack.useOnBlock(new AutomaticItemPlacementContext(this.magehand.world, blockPos, Direction.DOWN, itemStack, Direction.UP));
                 }
             });
-        }
+//        }
         super.tick();
     }
 
     @Override
     protected boolean isTargetPos(WorldView world, BlockPos pos) {
-        return world.getBlockState(pos).getBlock().equals(Blocks.FARMLAND) && this.magehand.world.getBlockState(pos.up()).isAir();
+        return pos.isWithinDistance(this.magehand.getStartingPos(),this.range) && world.getBlockState(pos).getBlock().equals(Blocks.FARMLAND) && this.magehand.world.getBlockState(pos.up()).isAir();
     }
 }

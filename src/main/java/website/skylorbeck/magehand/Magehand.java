@@ -38,3 +38,7 @@ public class Magehand implements ModInitializer {
         Registrar.regItem("gold_spawner",Declarar.MAGE_HAND_GOLD_SPAWNER,Declarar.MODID);
     }
 }
+
+//todo
+// hand skins
+// crafting recipes

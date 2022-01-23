@@ -26,14 +26,14 @@ extends MoveToTargetPosGoal {
     int range = 16;
 
     public MageHandPickUpItemGoal(MageHandAbstractEntity mageHand, double speed, int range) {
-        super(mageHand, speed, range, 10);
+        super(mageHand, speed, range, 4);
         this.range = range;
         this.magehand = mageHand;
     }
 
     @Override
     public double getDesiredDistanceToTarget() {
-        return 1;
+        return 2;
     }
 
     @Override

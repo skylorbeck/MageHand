@@ -22,7 +22,7 @@ public class MageHandResupplySeedsGoal
 extends MoveToTargetPosGoal {
     MageHandAbstractEntity magehand;
     public MageHandResupplySeedsGoal(MageHandAbstractEntity mageHand, double speed, int range) {
-        super(mageHand, speed, range,10);
+        super(mageHand, speed, range,4);
         this.magehand = mageHand;
     }
 
@@ -58,7 +58,7 @@ extends MoveToTargetPosGoal {
 
     @Override
     public void tick() {
-        if (hasReached()) {
+//        if (hasReached()) {
             BlockPos.iterateOutwards(this.magehand.getBlockPos(), 1, 1, 1).forEach(blockPos -> {
                 if (isTargetPos(this.magehand.world, blockPos)) {
                     ItemStack itemStack = magehand.getMainHandStack();
@@ -80,7 +80,7 @@ extends MoveToTargetPosGoal {
                     }
                 }
             });
-        }
+//        }
         super.tick();
     }
 

@@ -37,10 +37,6 @@ public class ReturnToStartGoal extends MoveToTargetPosGoal {
         return 0f;
     }
 
-    @Override
-    public boolean shouldContinue() {
-        return this.hand.getMainHandStack().isEmpty();
-    }
 
     @Override
     protected boolean isTargetPos(WorldView world, BlockPos pos) {
