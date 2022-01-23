@@ -6,19 +6,15 @@ package website.skylorbeck.magehand.entity.goals;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.ai.goal.MoveToTargetPosGoal;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldView;
 import website.skylorbeck.magehand.entity.MageHandAbstractEntity;
-
-import java.util.List;
 
 public class MageHandPutItemInChestGoal
 extends MoveToTargetPosGoal {

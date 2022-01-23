@@ -1,6 +1,5 @@
 package website.skylorbeck.magehand.entity.goals;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.goal.RevengeGoal;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;

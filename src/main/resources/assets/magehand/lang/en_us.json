@@ -1,7 +1,15 @@
 {
   "itemGroup.magehand.category": "Mage Hand",
-  "item.magehand.hostile_spawneritem": "Hostile Mage Hand",
-  "item.magehand.copper_spawneritem": "Copper Mage Hand",
-  "item.magehand.iron_spawneritem": "Iron Mage Hand",
-  "item.magehand.gold_spawneritem": "Gold Mage Hand"
+  "item.magehand.hostile_spawner_item": "Hostile Mage Hand",
+  "item.magehand.bone_hand_item": "Bone Hand",
+  "item.magehand.flesh_hand_item": "Flesh Hand",
+  "item.magehand.copper_spawner_item": "Copper Mage Hand",
+  "item.magehand.iron_spawner_item": "Iron Mage Hand",
+  "item.magehand.gold_spawner_item": "Gold Mage Hand",
+  "item.magehand.hand_essence_item": "Mage Hand Essence",
+
+  "entity.magehand.hostile": "Hostile Mage Hand",
+  "entity.magehand.copper": "Copper Mage Hand",
+  "entity.magehand.iron": "Iron Mage Hand",
+  "entity.magehand.gold": "Gold Mage Hand"
 }

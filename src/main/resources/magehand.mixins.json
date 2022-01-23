@@ -4,6 +4,7 @@
   "package": "website.skylorbeck.magehand.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "RecipeManagerMixin"
   ],
   "client": [
   ],

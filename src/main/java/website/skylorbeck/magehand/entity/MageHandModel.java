@@ -2,7 +2,6 @@ package website.skylorbeck.magehand.entity;
 
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import website.skylorbeck.magehand.Declarar;
 
