@@ -13,6 +13,27 @@ public class MageHandModel extends AnimatedGeoModel<MageHandAbstractEntity> {
 
     @Override
     public Identifier getTextureLocation(MageHandAbstractEntity object) {
+        if (object.getName().asString().equalsIgnoreCase("Chone")){
+            return Declarar.getIdentifier("textures/glitch.png");
+        } else
+        if (object.getName().asString().equalsIgnoreCase("Striker")){
+            return Declarar.getIdentifier("textures/wallmaster_blue.png");
+        } else
+        if (object.getName().asString().equalsIgnoreCase("CommissarGrey")){
+            return Declarar.getIdentifier("textures/commissargrey.png");
+        } else
+        if (object.getName().asString().equalsIgnoreCase("R2zoo")){
+            return Declarar.getIdentifier("textures/r2zoo.png");
+        } else
+        if (object.getName().asString().equalsIgnoreCase("Wally")){
+            return Declarar.getIdentifier("textures/wallmaster.png");
+        } else
+        if (object.getName().asString().equalsIgnoreCase("cattamale")){
+            return Declarar.getIdentifier("textures/floormaster.png");
+        } else
+        if (object.getName().asString().equalsIgnoreCase("SkylorBeck")){
+            return Declarar.getIdentifier("textures/mouse.png");
+        } else
         return object.getTexture();
     }
 

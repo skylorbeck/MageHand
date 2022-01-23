@@ -23,6 +23,11 @@ public abstract class MageHandFriendlyAbstractEntity extends MageHandAbstractEnt
     }
 
     @Override
+    public boolean cannotDespawn() {
+        return true;
+    }
+
+    @Override
     protected void initGoals() {
         this.goalSelector.add(7, new ReturnToStartGoal(this,1,40));
         super.initGoals();
