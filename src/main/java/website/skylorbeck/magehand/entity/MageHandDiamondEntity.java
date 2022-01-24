@@ -1,5 +1,6 @@
 package website.skylorbeck.magehand.entity;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -24,16 +25,25 @@ import website.skylorbeck.magehand.Declarar;
 import website.skylorbeck.magehand.entity.goals.*;
 
 public class MageHandDiamondEntity extends MageHandFriendlyAbstractEntity {
+    private Block[] targetBlock = new Block[]{Blocks.DIAMOND_ORE,Blocks.DEEPSLATE_DIAMOND_ORE};
     public MageHandDiamondEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
     }
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(1, new MageHandLookAtBlockGoal(this, Blocks.DIAMOND_ORE, 16));
-        this.goalSelector.add(1, new MageHandLookAtBlockGoal(this, Blocks.DEEPSLATE_DIAMOND_ORE, 16));
-        this.targetSelector.add(1, new MageHandCallForHelpGoal(this).setGroupRevenge(MageHandCopperEntity.class, MageHandDiamondEntity.class, MageHandGoldEntity.class, MageHandHostileEntity.class));
+        if (targetBlock!=null)
+        for (Block block : targetBlock) {
+            this.goalSelector.add(1, new MageHandLookAtBlockGoal(this, block, 16));
+        }
         super.initGoals();
+    }
+
+    public void setTargetBlock(Block[] blocks){
+        this.targetBlock = blocks;
+        this.goalSelector.clear();
+        this.targetSelector.clear();
+        this.initGoals();
     }
 
     @Override

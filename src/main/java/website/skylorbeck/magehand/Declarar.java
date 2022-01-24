@@ -14,6 +14,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import website.skylorbeck.magehand.entity.*;
+import website.skylorbeck.magehand.item.MageHandDiamondSpawner;
 import website.skylorbeck.magehand.item.MageHandSpawner;
 import website.skylorbeck.minecraft.skylorlib.DynamicRecipeLoader;
 
@@ -66,7 +67,7 @@ public class Declarar {
                     .setDimensions(0.5f, 0.75f)
                     .maxTrackingRange(10)
                     .build(MAGE_HAND_DIAMOND_ID.toString()));
-    public static final Item MAGE_HAND_DIAMOND_SPAWNER = new MageHandSpawner(MAGE_HAND_DIAMOND_ENTITY_TYPE, 9295582, new FabricItemSettings().group(mageHand).maxCount(16).rarity(Rarity.RARE));
+    public static final Item MAGE_HAND_DIAMOND_SPAWNER = new MageHandDiamondSpawner(MAGE_HAND_DIAMOND_ENTITY_TYPE, 9295582, new FabricItemSettings().group(mageHand).maxCount(16).rarity(Rarity.RARE));
 
     public static final Item MAGE_HAND_BONE_ITEM = new Item(new FabricItemSettings().group(mageHand));
     public static JsonObject MAGE_HAND_BONE = null;

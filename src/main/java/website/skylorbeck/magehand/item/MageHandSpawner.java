@@ -49,11 +49,11 @@ public class MageHandSpawner extends SpawnEggItem {
         }
         blockEntity = blockState.getCollisionShape(world, blockPos).isEmpty() ? blockPos : blockPos.offset(direction);
         EntityType<?> mobSpawnerLogic = this.getEntityType(itemStack.getNbt());
-        if (mobSpawnerLogic.spawnFromItemStack((ServerWorld)world, itemStack, context.getPlayer(), (BlockPos)blockEntity, SpawnReason.SPAWN_EGG, true, !Objects.equals(blockPos, blockEntity)) != null) {
+        Entity entity = mobSpawnerLogic.spawnFromItemStack((ServerWorld)world, itemStack, context.getPlayer(), (BlockPos)blockEntity, SpawnReason.SPAWN_EGG, true, !Objects.equals(blockPos, blockEntity));
+        if (entity != null) {
             itemStack.decrement(1);
             world.emitGameEvent((Entity)context.getPlayer(), GameEvent.ENTITY_PLACE, blockPos);
         }
         return ActionResult.CONSUME;
     }
-
 }
