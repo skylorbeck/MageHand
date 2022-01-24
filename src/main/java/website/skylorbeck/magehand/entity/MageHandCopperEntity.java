@@ -25,7 +25,7 @@ public class MageHandCopperEntity extends MageHandFriendlyAbstractEntity{
     protected void initGoals() {
         this.goalSelector.add(1,new MageHandPutItemInChestGoal(this,2,20));
         this.goalSelector.add(2,new MageHandPickUpItemGoal(this,2,16));
-        this.targetSelector.add(1, new MageHandCallForHelpGoal(this).setGroupRevenge(MageHandCopperEntity.class,MageHandGoldEntity.class,MageHandHostileEntity.class));
+        this.targetSelector.add(1, new MageHandCallForHelpGoal(this).setGroupRevenge(MageHandDiamondEntity.class,MageHandCopperEntity.class,MageHandGoldEntity.class,MageHandHostileEntity.class));
         super.initGoals();
     }
 

@@ -6,10 +6,12 @@
   "item.magehand.copper_spawner_item": "Copper Mage Hand",
   "item.magehand.iron_spawner_item": "Iron Mage Hand",
   "item.magehand.gold_spawner_item": "Gold Mage Hand",
+  "item.magehand.diamond_spawner_item": "Diamond Mage Hand",
   "item.magehand.hand_essence_item": "Mage Hand Essence",
 
   "entity.magehand.hostile": "Hostile Mage Hand",
   "entity.magehand.copper": "Copper Mage Hand",
   "entity.magehand.iron": "Iron Mage Hand",
-  "entity.magehand.gold": "Gold Mage Hand"
+  "entity.magehand.gold": "Gold Mage Hand",
+  "entity.magehand.diamond": "Diamond Mage Hand"
 }

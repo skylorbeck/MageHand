@@ -148,6 +148,9 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
     public int getTrackedTarget(){
         return this.dataTracker.get(trackedTarget);
     }
+    public void overrideTrackedTarget(int i){
+        this.dataTracker.set(trackedTarget, i);
+    }
 
     //gecko
     @Override
@@ -156,7 +159,7 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
         animationData.addAnimationController(new AnimationController<>(this, "hover_controller", 5, this::hover_predicate));
     }
 
-    private <E extends IAnimatable> PlayState locomotion_predicate(AnimationEvent<E> event) {
+    public <E extends IAnimatable> PlayState locomotion_predicate(AnimationEvent<E> event) {
         MageHandAbstractEntity mageHand = (MageHandAbstractEntity) event.getAnimatable();
 
         if (mageHand != null) {

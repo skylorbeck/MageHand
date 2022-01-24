@@ -37,7 +37,7 @@ public class MageHandGoldEntity extends MageHandFriendlyAbstractEntity{
         this.goalSelector.add(1,new MageHandResupplySeedsGoal(this,1,16));
         this.goalSelector.add(2,new MageHandHarvestPlantGoal(this,1,16));
         this.goalSelector.add(3,new MageHandPlantSeedGoal(this,1,16));
-        this.targetSelector.add(1, new MageHandCallForHelpGoal(this).setGroupRevenge(MageHandCopperEntity.class,MageHandGoldEntity.class,MageHandHostileEntity.class));
+        this.targetSelector.add(1, new MageHandCallForHelpGoal(this).setGroupRevenge(MageHandDiamondEntity.class,MageHandCopperEntity.class,MageHandGoldEntity.class,MageHandHostileEntity.class));
         super.initGoals();
     }
 

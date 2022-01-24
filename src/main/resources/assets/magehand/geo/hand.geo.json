@@ -12,7 +12,12 @@
 			},
 			"bones": [
 				{
+					"name": "shell",
+					"pivot": [-1, 5.5, 1]
+				},
+				{
 					"name": "palm",
+					"parent": "shell",
 					"pivot": [-1, 5.5, 1],
 					"cubes": [
 						{"origin": [-3, 5, -1], "size": [4, 1, 2], "uv": [0, 3]}

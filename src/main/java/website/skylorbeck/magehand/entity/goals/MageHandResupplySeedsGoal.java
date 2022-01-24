@@ -46,7 +46,7 @@ extends MoveToTargetPosGoal {
 
     @Override
     public boolean shouldResetPath() {
-        return  this.tryingTime % 20 == 0;
+        return this.tryingTime % 20 == 0;
     }
 
     @Override
