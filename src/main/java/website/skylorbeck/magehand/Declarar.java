@@ -68,6 +68,14 @@ public class Declarar {
                     .maxTrackingRange(10)
                     .build(MAGE_HAND_DIAMOND_ID.toString()));
     public static final Item MAGE_HAND_DIAMOND_SPAWNER = new MageHandDiamondSpawner(MAGE_HAND_DIAMOND_ENTITY_TYPE, 9295582, new FabricItemSettings().group(mageHand).maxCount(16).rarity(Rarity.RARE));
+    
+    public static Identifier MAGE_HAND_AMETHYST_ID = getIdentifier("amethyst");
+    public static final EntityType<MageHandAmethystEntity> MAGE_HAND_AMETHYST_ENTITY_TYPE = Registry.register(Registry.ENTITY_TYPE, MAGE_HAND_AMETHYST_ID,
+            EntityType.Builder.create(MageHandAmethystEntity::new, SpawnGroup.MISC)
+                    .setDimensions(0.5f, 0.75f)
+                    .maxTrackingRange(10)
+                    .build(MAGE_HAND_AMETHYST_ID.toString()));
+    public static final Item MAGE_HAND_AMETHYST_SPAWNER = new MageHandSpawner(MAGE_HAND_AMETHYST_ENTITY_TYPE, 10053324, new FabricItemSettings().group(mageHand).maxCount(16).rarity(Rarity.EPIC));
 
     public static final Item MAGE_HAND_BONE_ITEM = new Item(new FabricItemSettings().group(mageHand));
     public static JsonObject MAGE_HAND_BONE = null;
@@ -79,6 +87,7 @@ public class Declarar {
     public static JsonObject MAGE_HAND_IRON = null;
     public static JsonObject MAGE_HAND_GOLD = null;
     public static JsonObject MAGE_HAND_DIAMOND = null;
+    public static JsonObject MAGE_HAND_AMETHYST = null;
 
     public static final Item MAGE_HAND_ESSENCE = new Item(new FabricItemSettings().group(mageHand));
 

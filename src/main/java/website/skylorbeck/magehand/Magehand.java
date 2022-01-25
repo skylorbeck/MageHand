@@ -40,6 +40,10 @@ public class Magehand implements ModInitializer {
                 MageHandAbstractEntity.createMobAttributes());
         Registrar.regItem("diamond_spawner_", Declarar.MAGE_HAND_DIAMOND_SPAWNER, Declarar.MODID);
 
+        FabricDefaultAttributeRegistry.register(Declarar.MAGE_HAND_AMETHYST_ENTITY_TYPE,
+                MageHandAbstractEntity.createMobAttributes());
+        Registrar.regItem("amethyst_spawner_", Declarar.MAGE_HAND_AMETHYST_SPAWNER, Declarar.MODID);
+
         Registrar.regItem("bone_hand_", Declarar.MAGE_HAND_BONE_ITEM, Declarar.MODID);
         Registrar.regItem("flesh_hand_", Declarar.MAGE_HAND_FLESH_ITEM, Declarar.MODID);
         Registrar.regItem("hand_essence_", Declarar.MAGE_HAND_ESSENCE,Declarar.MODID);
@@ -83,6 +87,13 @@ public class Magehand implements ModInitializer {
                 Lists.newArrayList(false, false),//type
                 Lists.newArrayList("111", "101", "111"),//pattern
                 Registry.ITEM.getId(Declarar.MAGE_HAND_DIAMOND_SPAWNER),
+                1
+        );
+        Declarar.MAGE_HAND_AMETHYST = DynamicRecipeLoader.createShapedRecipeJson(
+                Lists.newArrayList(Registry.ITEM.getId(Declarar.MAGE_HAND_FLESH_ITEM), Registry.ITEM.getId(Items.AMETHYST_SHARD)),//items
+                Lists.newArrayList(false, false),//type
+                Lists.newArrayList("111", "101", "111"),//pattern
+                Registry.ITEM.getId(Declarar.MAGE_HAND_AMETHYST_SPAWNER),
                 1
         );
     }

@@ -5,7 +5,10 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import website.skylorbeck.magehand.Declarar;
@@ -36,6 +39,11 @@ public abstract class MageHandFriendlyAbstractEntity extends MageHandAbstractEnt
     public void equipStack(EquipmentSlot slot, ItemStack stack) {
         this.setEquipmentDropChance(EquipmentSlot.MAINHAND,100f);
         super.equipStack(slot,stack);
+    }
+
+    @Override
+    protected ActionResult interactMob(PlayerEntity player, Hand hand) {
+        return ActionResult.SUCCESS;
     }
 
     @Override

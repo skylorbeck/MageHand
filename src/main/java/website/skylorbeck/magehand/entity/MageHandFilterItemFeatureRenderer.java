@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.renderers.geo.GeoLayerRenderer;
@@ -18,26 +19,27 @@ import website.skylorbeck.magehand.Declarar;
 
 @SuppressWarnings("rawtypes")
 @Environment(value= EnvType.CLIENT)
-public class MageHandHeldItemFeatureRenderer extends GeoLayerRenderer {
-    private static final Identifier MODEL =  Declarar.getIdentifier("geo/hand.geo.json");
+public class MageHandFilterItemFeatureRenderer extends GeoLayerRenderer {
+    private static final Identifier MODEL = Declarar.getIdentifier("geo/hand.geo.json");
 
     @SuppressWarnings("unchecked")
-    public MageHandHeldItemFeatureRenderer(IGeoRenderer entityRendererIn) {
+    public MageHandFilterItemFeatureRenderer(IGeoRenderer entityRendererIn) {
         super(entityRendererIn);
     }
 
 
     @Override
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int packedLightIn, Entity livingEntity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        ItemStack itemStack = ((LivingEntity)livingEntity).getMainHandStack();
-        if (itemStack.getItem() instanceof SwordItem){
-            return;
-        }
+        ItemStack itemStack = ((LivingEntity) livingEntity).getOffHandStack();
         matrixStack.push();
-        matrixStack.translate(0.05, 0.15,0);
-        matrixStack.scale(0.75f,0.75f,0.75f);
-        MinecraftClient.getInstance().getHeldItemRenderer().renderItem((LivingEntity)livingEntity, itemStack, ModelTransformation.Mode.GROUND, false, matrixStack, vertexConsumerProvider, packedLightIn);
+        matrixStack.translate(0.05, 0.75, 0);
+        matrixStack.scale(0.35f, 0.35f, 0.35f);
+        MinecraftClient.getInstance().getHeldItemRenderer().renderItem((LivingEntity) livingEntity, itemStack, ModelTransformation.Mode.GROUND, false, matrixStack, vertexConsumerProvider, packedLightIn);
+        if (livingEntity instanceof MageHandAmethystEntity amethystEntity && !amethystEntity.isWhitelist()) {
+            itemStack = Items.BARRIER.getDefaultStack();
+            matrixStack.translate(0f, 0, -0.05);
+            MinecraftClient.getInstance().getHeldItemRenderer().renderItem((LivingEntity) livingEntity, itemStack, ModelTransformation.Mode.GROUND, false, matrixStack, vertexConsumerProvider, packedLightIn);
+        }
         matrixStack.pop();
     }
 }
-

@@ -14,6 +14,7 @@ public class MageHandRenderer extends GeoEntityRenderer<MageHandAbstractEntity> 
     public MageHandRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new MageHandModel());
         this.addLayer(new MageHandHeldItemFeatureRenderer(this));
+        this.addLayer(new MageHandFilterItemFeatureRenderer(this));
         this.addLayer(new MageHandSwordLayer(this));
     }
 
