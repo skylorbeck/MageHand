@@ -21,7 +21,7 @@ public class Magehand implements ModInitializer {
         GeckoLib.initialize();
         FabricDefaultAttributeRegistry.register(Declarar.MAGE_HAND_HOSTILE_ENTITY_TYPE,
                 MageHandAbstractEntity.createMobAttributes());
-        BiomeModifications.addSpawn(BiomeSelectors.categories(Biome.Category.NETHER), SpawnGroup.MONSTER, Declarar.MAGE_HAND_HOSTILE_ENTITY_TYPE, 50, 2, 4);
+        BiomeModifications.addSpawn(BiomeSelectors.categories(Biome.Category.NETHER), SpawnGroup.MONSTER, Declarar.MAGE_HAND_HOSTILE_ENTITY_TYPE, 1, 2, 4);
         Registrar.regItem("hostile_spawner_", Declarar.MAGE_HAND_HOSTILE_SPAWNER, Declarar.MODID);
 
         FabricDefaultAttributeRegistry.register(Declarar.MAGE_HAND_COPPER_ENTITY_TYPE,
