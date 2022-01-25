@@ -33,11 +33,11 @@ public class MageHandFilterItemFeatureRenderer extends GeoLayerRenderer {
         ItemStack itemStack = ((LivingEntity) livingEntity).getOffHandStack();
         matrixStack.push();
         matrixStack.translate(0.05, 0.75, 0);
-        matrixStack.scale(0.35f, 0.35f, 0.35f);
+        matrixStack.scale(0.25f, 0.25f, 0.25f);
         MinecraftClient.getInstance().getHeldItemRenderer().renderItem((LivingEntity) livingEntity, itemStack, ModelTransformation.Mode.GROUND, false, matrixStack, vertexConsumerProvider, packedLightIn);
         if (livingEntity instanceof MageHandAmethystEntity amethystEntity && !amethystEntity.isWhitelist()) {
             itemStack = Items.BARRIER.getDefaultStack();
-            matrixStack.translate(0f, 0, -0.05);
+            matrixStack.translate(0f, 0.05, -0.15);
             MinecraftClient.getInstance().getHeldItemRenderer().renderItem((LivingEntity) livingEntity, itemStack, ModelTransformation.Mode.GROUND, false, matrixStack, vertexConsumerProvider, packedLightIn);
         }
         matrixStack.pop();
