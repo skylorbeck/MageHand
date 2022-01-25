@@ -36,6 +36,12 @@ public class MageHandModel extends AnimatedGeoModel<MageHandAbstractEntity> {
         if (object.getName().asString().equalsIgnoreCase("SkylorBeck")){
             return Declarar.getIdentifier("textures/mouse.png");
         } else
+        if (object.getName().asString().equalsIgnoreCase("Thanos")){
+            return Declarar.getIdentifier("textures/thanos.png");
+        } else
+        if (object.getName().asString().equalsIgnoreCase("ironman")){
+            return Declarar.getIdentifier("textures/ironman.png");
+        } else
         return object.getTexture();
     }
 
