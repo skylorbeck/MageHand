@@ -41,7 +41,7 @@ extends MoveToTargetPosGoal {
 
     @Override
     public boolean shouldContinue() {
-        return magehand.getMainHandStack().isEmpty() && super.shouldContinue();
+        return this.tryingTime<=300 && magehand.getMainHandStack().isEmpty() && super.shouldContinue();
     }
 
     @Override

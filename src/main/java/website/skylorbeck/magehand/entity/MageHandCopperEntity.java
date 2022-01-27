@@ -54,4 +54,3 @@ public class MageHandCopperEntity extends MageHandFriendlyAbstractEntity{
         return super.interactMob(player, hand);
     }
 }
-

@@ -71,4 +71,3 @@ extends MoveToTargetPosGoal {
         return this.magehand.world.getEntitiesByClass(ItemEntity.class, new Box(pos), itemEntity -> true).stream().findAny().isPresent();
     }
 }
-

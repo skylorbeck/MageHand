@@ -3,14 +3,19 @@ package website.skylorbeck.magehand.entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import website.skylorbeck.magehand.Declarar;
@@ -20,7 +25,8 @@ import website.skylorbeck.magehand.entity.goals.MageHandPickUpItemGoal;
 import website.skylorbeck.magehand.entity.goals.MageHandPutItemInChestGoal;
 
 public class MageHandAmethystEntity extends MageHandFriendlyAbstractEntity {
-    boolean whitelist = true;
+    private static final TrackedData<Boolean> filterMode = DataTracker.registerData(MageHandAbstractEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+
 
     public MageHandAmethystEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
@@ -35,11 +41,29 @@ public class MageHandAmethystEntity extends MageHandFriendlyAbstractEntity {
     }
 
     public boolean isWhitelist() {
-        return whitelist;
+        return this.dataTracker.get(filterMode);
     }
 
     public void flipMode() {
-        this.whitelist = !this.whitelist;
+        this.dataTracker.set(filterMode, !this.dataTracker.get(filterMode));
+    }
+
+    @Override
+    protected void initDataTracker() {
+        this.dataTracker.startTracking(filterMode,true);
+        super.initDataTracker();
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        nbt.putBoolean("whitelist",this.dataTracker.get(filterMode));
+        super.writeCustomDataToNbt(nbt);
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        this.dataTracker.set(filterMode,nbt.getBoolean("whitelist"));
+        super.readCustomDataFromNbt(nbt);
     }
 
     @Override

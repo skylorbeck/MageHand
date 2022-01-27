@@ -19,11 +19,39 @@ import website.skylorbeck.magehand.entity.MageHandAmethystEntity;
 import java.util.List;
 
 public class MageHandFilteredPickUpItemGoal
-extends MageHandPickUpItemGoal {
+extends MoveToTargetPosGoal {
+    MageHandAbstractEntity magehand;
     int range = 16;
 
     public MageHandFilteredPickUpItemGoal(MageHandAbstractEntity mageHand, double speed, int range) {
-        super(mageHand, speed, range);
+        super(mageHand, speed, range, 4);
+        this.range = range;
+        this.magehand = mageHand;
+    }
+
+    @Override
+    public double getDesiredDistanceToTarget() {
+        return 2;
+    }
+
+    @Override
+    protected int getInterval(PathAwareEntity mob) {
+        return 20;
+    }
+
+    @Override
+    public boolean shouldResetPath() {
+        return this.tryingTime % 20 == 0;
+    }
+
+    @Override
+    public boolean canStart() {
+        return magehand.getMainHandStack().isEmpty() && super.canStart();
+    }
+
+    @Override
+    public boolean shouldContinue() {
+        return magehand.getMainHandStack().isEmpty() && super.shouldContinue();
     }
 
     @Override
@@ -39,13 +67,13 @@ extends MageHandPickUpItemGoal {
                 itemEntity.getStack().setCount(0);
             }
         }
+        super.tick();
     }
 
     @Override
     protected boolean isTargetPos(WorldView world, BlockPos pos) {
         MageHandAmethystEntity mageHand = (MageHandAmethystEntity) this.magehand;
-        return this.magehand.world.getEntitiesByClass(ItemEntity.class, new Box(pos), itemEntity -> !mageHand.getOffHandStack().isEmpty() && mageHand.isWhitelist() == mageHand.getOffHandStack().isOf(itemEntity.getStack().getItem())).stream().findAny().isPresent();
+        return this.magehand.world.getEntitiesByClass(ItemEntity.class, new Box(pos), itemEntity -> (itemEntity.isOnGround() || itemEntity.isSubmergedInWater())&& !mageHand.getOffHandStack().isEmpty() && mageHand.isWhitelist() == mageHand.getOffHandStack().isOf(itemEntity.getStack().getItem())).stream().findAny().isPresent();
     }
 
 }
-
