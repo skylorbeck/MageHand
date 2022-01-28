@@ -10,6 +10,9 @@ import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.WorldView;
@@ -65,6 +68,7 @@ extends MoveToTargetPosGoal {
                 itemStack = itemEntity.getStack().copy();
                 magehand.equipStack(EquipmentSlot.MAINHAND, itemStack);
                 itemEntity.getStack().setCount(0);
+                magehand.world.playSoundFromEntity(null, magehand, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.NEUTRAL, 0.2f, ((mageHand.world.random.nextFloat() - magehand.world.random.nextFloat()) * 0.7f + 1.0f) * 2.0f);
             }
         }
         super.tick();

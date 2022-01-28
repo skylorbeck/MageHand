@@ -11,6 +11,8 @@ import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldView;
 import website.skylorbeck.magehand.entity.MageHandAbstractEntity;
@@ -71,6 +73,7 @@ extends MoveToTargetPosGoal {
                                         itemStack = inventory.getStack(is);
                                         magehand.equipStack(EquipmentSlot.MAINHAND, itemStack);
                                         inventory.setStack(is, ItemStack.EMPTY);
+                                        magehand.world.playSoundFromEntity(null, magehand, SoundEvents.BLOCK_CHEST_OPEN, SoundCategory.NEUTRAL, 0.2f, ((magehand.world.random.nextFloat() - magehand.world.random.nextFloat()) * 0.7f + 1.0f) * 2.0f);
                                     }
                                 }
                             }
