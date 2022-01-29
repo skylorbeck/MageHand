@@ -165,7 +165,7 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
         if (mageHand != null) {
             if (mageHand.hasTrackedTarget()) {
                 Entity target = mageHand.world.getEntityById(mageHand.getTrackedTarget());
-                float distance = mageHand.distanceTo(target);
+                float distance = target!=null? mageHand.distanceTo(target):5;
                 if (mageHand.getMainHandStack().isEmpty()) {
                     if (distance > 8) {
                         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.point", true));
