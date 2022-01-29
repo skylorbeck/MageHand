@@ -79,7 +79,7 @@ public class MageHandAmethystEntity extends MageHandFriendlyAbstractEntity {
     protected ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
         if (this.getOffHandStack().isEmpty()) {
-            this.equipStack(EquipmentSlot.OFFHAND, itemStack);
+            this.equipStack(EquipmentSlot.OFFHAND, itemStack.copy());
             this.setEquipmentDropChance(EquipmentSlot.OFFHAND, 0);
         } else if (itemStack.isOf(this.getOffHandStack().getItem())) {
             this.flipMode();

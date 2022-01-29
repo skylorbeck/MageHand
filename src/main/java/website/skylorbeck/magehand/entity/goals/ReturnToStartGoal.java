@@ -34,7 +34,7 @@ public class ReturnToStartGoal extends MoveToTargetPosGoal {
 
     @Override
     public double getDesiredDistanceToTarget() {
-        return 0f;
+        return 1f;
     }
 
 

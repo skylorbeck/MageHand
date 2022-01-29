@@ -38,6 +38,7 @@ extends MoveToTargetPosGoal {
 
     @Override
     public boolean canStart() {
+//        return true;
         return !magehand.getMainHandStack().isEmpty() && super.canStart();
     }
 
@@ -127,7 +128,7 @@ extends MoveToTargetPosGoal {
 
     @Override
     protected boolean isTargetPos(WorldView world, BlockPos pos) {
-        if (!world.isAir(pos.up()) || !pos.isWithinDistance(magehand.getStartingPos(),1)) {
+        if (!world.isAir(pos.up())) {
             return false;
         }
         BlockState blockState = world.getBlockState(pos);
