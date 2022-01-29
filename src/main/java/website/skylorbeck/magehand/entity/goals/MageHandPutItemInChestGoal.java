@@ -128,7 +128,7 @@ extends MoveToTargetPosGoal {
 
     @Override
     protected boolean isTargetPos(WorldView world, BlockPos pos) {
-        if (!world.isAir(pos.up())) {
+        if (!world.isAir(pos.up()) && pos.isWithinDistance(this.magehand.getStartingPos(),2)) {
             return false;
         }
         BlockState blockState = world.getBlockState(pos);
