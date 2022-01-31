@@ -14,6 +14,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import website.skylorbeck.magehand.entity.*;
+import website.skylorbeck.magehand.item.DebugSpawner;
 import website.skylorbeck.magehand.item.MageHandDiamondSpawner;
 import website.skylorbeck.magehand.item.MageHandSpawner;
 import website.skylorbeck.minecraft.skylorlib.DynamicRecipeLoader;
@@ -90,5 +91,5 @@ public class Declarar {
     public static JsonObject MAGE_HAND_AMETHYST = null;
 
     public static final Item MAGE_HAND_ESSENCE = new Item(new FabricItemSettings().group(mageHand));
-
+    public static final Item DEBUGSPAWNER = new DebugSpawner(new FabricItemSettings().group(mageHand));
 }
