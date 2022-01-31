@@ -40,7 +40,7 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
     private final AnimationFactory factory = new AnimationFactory(this);
     private static final TrackedData<Integer> trackedTarget = DataTracker.registerData(MageHandAbstractEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> stretchTicks = DataTracker.registerData(MageHandAbstractEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private BlockPos startingPos;
+    private BlockPos startingPos = BlockPos.ORIGIN;
 
 
     protected MageHandAbstractEntity(EntityType<? extends PathAwareEntity> entityType, World world) {

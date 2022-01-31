@@ -47,6 +47,7 @@ public class Magehand implements ModInitializer {
         Registrar.regItem("bone_hand_", Declarar.MAGE_HAND_BONE_ITEM, Declarar.MODID);
         Registrar.regItem("flesh_hand_", Declarar.MAGE_HAND_FLESH_ITEM, Declarar.MODID);
         Registrar.regItem("hand_essence_", Declarar.MAGE_HAND_ESSENCE,Declarar.MODID);
+//        Registrar.regItem("debugger", Declarar.DEBUGSPAWNER,Declarar.MODID);
         Declarar.MAGE_HAND_BONE = DynamicRecipeLoader.createShapedRecipeJson(
                 Lists.newArrayList(Registry.ITEM.getId(Items.BONE),Registry.ITEM.getId(Declarar.MAGE_HAND_ESSENCE)),//items
                 Lists.newArrayList(false,false),//type
