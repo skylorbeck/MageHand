@@ -6,9 +6,9 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import software.bernie.geckolib3.core.util.Color;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
-import java.awt.*;
 @SuppressWarnings({ "unchecked"})
 public class MageHandRenderer extends GeoEntityRenderer<MageHandAbstractEntity> {
     public MageHandRenderer(EntityRendererFactory.Context ctx) {
@@ -24,7 +24,7 @@ public class MageHandRenderer extends GeoEntityRenderer<MageHandAbstractEntity> 
     }
 
     @Override
-    public Color getRenderColor(MageHandAbstractEntity animatable, float partialTicks, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn) {
-        return new Color(255, 255, 255, 155);
+    public software.bernie.geckolib3.core.util.Color getRenderColor(MageHandAbstractEntity animatable, float partialTicks, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn) {
+        return Color.ofRGBA(255, 255, 255, 155);
     }
 }
