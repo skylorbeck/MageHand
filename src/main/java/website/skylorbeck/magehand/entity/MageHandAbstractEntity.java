@@ -166,37 +166,39 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
     public <E extends IAnimatable> PlayState locomotion_predicate(AnimationEvent<E> event) {
         MageHandAbstractEntity mageHand = (MageHandAbstractEntity) event.getAnimatable();
 
-        if (mageHand != null) {
-            if (mageHand.hasTrackedTarget()) {
-                Entity target = mageHand.world.getEntityById(mageHand.getTrackedTarget());
-                float distance = target!=null? mageHand.distanceTo(target):5;
-                if (mageHand.getMainHandStack().isEmpty()) {
-                    if (distance > 8) {
-                        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.point", true));
-                    } else if (distance < 3) {
-                        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.punch", true));
-                    } else {
-                        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.fist", true));
-                    }
+        if (mageHand == null) {
+            return PlayState.CONTINUE;
+        }
+
+        if (mageHand.hasTrackedTarget()) {
+            Entity target = mageHand.world.getEntityById(mageHand.getTrackedTarget());
+            float distance = target!=null? mageHand.distanceTo(target):5;
+            if (mageHand.getMainHandStack().isEmpty()) {
+                if (distance > 8) {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.point", true));
+                } else if (distance < 3) {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.punch", true));
                 } else {
-                    if (distance < 3) {
-                        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.slash", true));
-                    } else {
-                        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.fist", true));
-                    }
-                }
-            } else if (!mageHand.getMainHandStack().isEmpty()) {
-                if (mageHand.getMainHandStack().getItem() instanceof SwordItem) {
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.fist", true));
-                } else {
-                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.holdingitem", true));
                 }
             } else {
-                if (isStretching()) {
-                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.stretch", true));
+                if (distance < 3) {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.slash", true));
                 } else {
-                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.idle", true));
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.fist", true));
                 }
+            }
+        } else if (!mageHand.getMainHandStack().isEmpty()) {
+            if (mageHand.getMainHandStack().getItem() instanceof SwordItem) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.fist", true));
+            } else {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.holdingitem", true));
+            }
+        } else {
+            if (isStretching()) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.stretch", true));
+            } else {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.hand.idle", true));
             }
         }
         return PlayState.CONTINUE;
