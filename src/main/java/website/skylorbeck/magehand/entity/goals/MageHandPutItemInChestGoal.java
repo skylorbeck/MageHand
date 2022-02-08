@@ -18,6 +18,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldView;
 import website.skylorbeck.magehand.entity.MageHandAbstractEntity;
 
+import static website.skylorbeck.minecraft.skylorlib.storage.StorageUtils.transfer;
+
 public class MageHandPutItemInChestGoal
 extends MoveToTargetPosGoal {
     MageHandAbstractEntity magehand;
@@ -85,45 +87,6 @@ extends MoveToTargetPosGoal {
             });
         super.tick();
 
-    }
-    private static ItemStack transfer(Inventory to, ItemStack stack, int slot, Direction dir) {
-        ItemStack itemStack = to.getStack(slot);
-        if (canInsert(to, stack, slot, dir)) {
-            int j;
-            boolean bl = false;
-            if (itemStack.isEmpty()) {
-                to.setStack(slot, stack);
-                stack = ItemStack.EMPTY;
-                bl = true;
-            } else if (canMergeItems(itemStack, stack)) {
-                int i = stack.getMaxCount() - itemStack.getCount();
-                j = Math.min(stack.getCount(), i);
-                stack.decrement(j);
-                itemStack.increment(j);
-            }
-            if (bl) {
-                to.markDirty();
-            }
-        }
-        return stack;
-    }
-    private static boolean canInsert(Inventory inventory, ItemStack stack, int slot, Direction dir) {
-        if (!inventory.isValid(slot, stack)) {
-            return false;
-        }
-        return !(inventory instanceof SidedInventory) || ((SidedInventory)inventory).canInsert(slot, stack, dir);
-    }
-    private static boolean canMergeItems(ItemStack first, ItemStack second) {
-        if (!first.isOf(second.getItem())) {
-            return false;
-        }
-        if (first.getDamage() != second.getDamage()) {
-            return false;
-        }
-        if (first.getCount() > first.getMaxCount()) {
-            return false;
-        }
-        return ItemStack.areNbtEqual(first, second);
     }
 
     @Override

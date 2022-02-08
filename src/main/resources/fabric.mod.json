@@ -8,7 +8,8 @@
     "Author: Skylor Beck",
     "Patrons:",
     "Ch'one No akumus",
-    "Striker99974"
+    "Striker99974",
+    "TheNoobGamer07"
   ],
   "contact": {
     "homepage": "https://www.skylorbeck.website",
@@ -34,7 +35,7 @@
     "fabricloader": ">=0.12.12",
     "fabric": "*",
     "minecraft": "1.18.1",
-    "skylorlib": ">=1.1.0",
+    "skylorlib": ">=1.1.1",
     "geckolib3": ">=3.0.31"
   }
 }
