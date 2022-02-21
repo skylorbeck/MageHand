@@ -1,0 +1,19 @@
+{
+  "itemGroup.magehand.category": "Mage Hand",
+  "item.magehand.hostile_spawner_item": "Демонической Десницы",
+  "item.magehand.bone_hand_item": "Костяная Рука",
+  "item.magehand.flesh_hand_item": "Гнилая Рука",
+  "item.magehand.copper_spawner_item": "Медная Волшебная Десница",
+  "item.magehand.iron_spawner_item": "Железная Волшебная Десница",
+  "item.magehand.gold_spawner_item": "Золотая Волшебная Десница",
+  "item.magehand.diamond_spawner_item": "Алмазная Волшебная Десница",
+  "item.magehand.amethyst_spawner_item": "Аметистовая Волшебная Десница",
+  "item.magehand.hand_essence_item": "Магическая Пыль",
+
+  "entity.magehand.hostile": "Демоническая Десница",
+  "entity.magehand.copper": "Медная Волшебная Десница",
+  "entity.magehand.iron": "Железная Волшебная Десница",
+  "entity.magehand.gold": "Золотая Волшебная Десница",
+  "entity.magehand.diamond": "Алмазная Волшебная Десница",
+  "entity.magehand.amethyst": "Аметистовая Волшебная Десница"
+}

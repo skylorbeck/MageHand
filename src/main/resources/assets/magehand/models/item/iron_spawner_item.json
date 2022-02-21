@@ -1,3 +1,6 @@
 {
-  "parent": "magehand:item/template_spawn_hand"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "magehand:iron_hand"
+  }
 }

@@ -30,8 +30,8 @@ import java.util.Objects;
 public class MageHandDiamondSpawner extends SpawnEggItem {
     public possibleTargets currentTarget = possibleTargets.Diamond;
 
-    public MageHandDiamondSpawner(EntityType<? extends MobEntity> type, int color, Settings settings) {
-        super(type, color, color, settings);
+    public MageHandDiamondSpawner(EntityType<? extends MobEntity> type, Settings settings) {
+        super(type,16777215,16777215, settings);
     }
 
     enum possibleTargets {

@@ -15,34 +15,35 @@ public class MageHandModel extends AnimatedGeoModel<MageHandAbstractEntity> {
 
     @Override
     public Identifier getTextureLocation(MageHandAbstractEntity object) {
-        if (object.getName().asString().equalsIgnoreCase("Chone")){
+        String name = object.getName().asString();
+        if (name.equalsIgnoreCase("Chone")){
             return Declarar.getIdentifier("textures/glitch.png");
         } else
-        if (object.getName().asString().equalsIgnoreCase("Striker")){
+        if (name.equalsIgnoreCase("Striker")){
             return Declarar.getIdentifier("textures/wallmaster_blue.png");
         } else
-        if (object.getName().asString().equalsIgnoreCase("CommissarGrey")){
+        if (name.equalsIgnoreCase("CommissarGrey")){
             return Declarar.getIdentifier("textures/commissargrey.png");
         } else
-        if (object.getName().asString().equalsIgnoreCase("R2zoo")){
+        if (name.equalsIgnoreCase("R2zoo")){
             return Declarar.getIdentifier("textures/r2zoo.png");
         } else
-        if (object.getName().asString().equalsIgnoreCase("Wally")){
+        if (name.equalsIgnoreCase("Wally")){
             return Declarar.getIdentifier("textures/wallmaster.png");
         } else
-        if (object.getName().asString().equalsIgnoreCase("cattamale")){
+        if (name.equalsIgnoreCase("cattamale")){
             return Declarar.getIdentifier("textures/floormaster.png");
         } else
-        if (object.getName().asString().equalsIgnoreCase("SkylorBeck")){
+        if (name.equalsIgnoreCase("SkylorBeck")){
             return Declarar.getIdentifier("textures/mouse.png");
         } else
-        if (object.getName().asString().equalsIgnoreCase("Thanos")){
+        if (name.equalsIgnoreCase("Thanos")){
             return Declarar.getIdentifier("textures/thanos.png");
         } else
-        if (object.getName().asString().equalsIgnoreCase("ironman")){
+        if (name.equalsIgnoreCase("ironman")){
             return Declarar.getIdentifier("textures/ironman.png");
         } else
-        if (object.getName().asString().equalsIgnoreCase("noobgamer")){
+        if (name.equalsIgnoreCase("noobgamer")){
             return Declarar.getIdentifier("textures/noobgamer.png");
         } else
         return object.getTexture();

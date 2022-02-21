@@ -23,8 +23,8 @@ import net.minecraft.world.event.GameEvent;
 import java.util.Objects;
 
 public class MageHandSpawner extends SpawnEggItem {
-    public MageHandSpawner(EntityType<? extends MobEntity> type, int color, Settings settings) {
-        super(type, color, color, settings);
+    public MageHandSpawner(EntityType<? extends MobEntity> type, Settings settings) {
+        super(type,16777215,16777215, settings);
     }
 
     @Override
