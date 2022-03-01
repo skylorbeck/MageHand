@@ -91,5 +91,5 @@ public class Declarar {
     public static JsonObject MAGE_HAND_AMETHYST = null;
 
     public static final Item MAGE_HAND_ESSENCE = new Item(new FabricItemSettings().group(mageHand));
-    public static final Item DEBUGSPAWNER = new DebugSpawner(new FabricItemSettings().group(mageHand));
+//    public static final Item DEBUGSPAWNER = new DebugSpawner(new FabricItemSettings().group(mageHand));
 }
