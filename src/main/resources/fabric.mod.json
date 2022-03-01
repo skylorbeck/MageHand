@@ -33,10 +33,10 @@
     "magehand.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.12.12",
+    "fabricloader": ">=0.13.3",
     "fabric": "*",
-    "minecraft": "1.18.1",
-    "skylorlib": ">=1.2.1",
-    "geckolib3": ">=3.0.31"
+    "minecraft": "1.18.2",
+    "geckolib3": ">=3.0.35",
+    "skylorlib": ">=1.2.2"
   }
 }
