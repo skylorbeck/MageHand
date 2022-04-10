@@ -9,6 +9,7 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.Items;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 import software.bernie.geckolib3.GeckoLib;
 import website.skylorbeck.magehand.entity.MageHandAbstractEntity;
 import website.skylorbeck.magehand.entity.MageHandIronEntity;
@@ -20,8 +21,8 @@ public class Magehand implements ModInitializer {
     public void onInitialize() {
         GeckoLib.initialize();
         FabricDefaultAttributeRegistry.register(Declarar.MAGE_HAND_HOSTILE_ENTITY_TYPE,
-                MageHandAbstractEntity.createMobAttributes());
-        BiomeModifications.addSpawn(BiomeSelectors.categories(Biome.Category.NETHER), SpawnGroup.MONSTER, Declarar.MAGE_HAND_HOSTILE_ENTITY_TYPE, 1, 2, 4);
+                MageHandAbstractEntity.createMobAttributes());//todo add config for individual biome spawn rates
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.SOUL_SAND_VALLEY).and(BiomeSelectors.includeByKey(BiomeKeys.NETHER_WASTES)), SpawnGroup.MONSTER, Declarar.MAGE_HAND_HOSTILE_ENTITY_TYPE, 1, 2, 4);
         Registrar.regItem("hostile_spawner_", Declarar.MAGE_HAND_HOSTILE_SPAWNER, Declarar.MODID);
 
         FabricDefaultAttributeRegistry.register(Declarar.MAGE_HAND_COPPER_ENTITY_TYPE,
