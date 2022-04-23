@@ -15,5 +15,19 @@
   "entity.magehand.iron": "Iron Mage Hand",
   "entity.magehand.gold": "Gold Mage Hand",
   "entity.magehand.diamond": "Diamond Mage Hand",
-  "entity.magehand.amethyst": "Amethyst Mage Hand"
+  "entity.magehand.amethyst": "Amethyst Mage Hand",
+
+  "text.autoconfig.Magehand.option.maxGroupSize": "Max Group Size",
+  "text.autoconfig.Magehand.option.minGroupSize": "Min Group Size",
+  "text.autoconfig.Magehand.option.spawnStuff": "Spawn Settings",
+  "text.autoconfig.Magehand.option.spawnStuff.nether_wastes": "Nether Wastes",
+  "text.autoconfig.Magehand.option.spawnStuff.warped_forest": "Warped Forest",
+  "text.autoconfig.Magehand.option.spawnStuff.crimson_forest": "Crimson Forest",
+  "text.autoconfig.Magehand.option.spawnStuff.soul_valley": "Soul Sand Valley",
+  "text.autoconfig.Magehand.option.spawnStuff.basalt_delta": "Basalt Delta",
+  "text.autoconfig.Magehand.option.spawnStuff.spawnWeightA": "^ Spawn Weight",
+  "text.autoconfig.Magehand.option.spawnStuff.spawnWeightB": "^ Spawn Weight",
+  "text.autoconfig.Magehand.option.spawnStuff.spawnWeightC": "^ Spawn Weight",
+  "text.autoconfig.Magehand.option.spawnStuff.spawnWeightD": "^ Spawn Weight",
+  "text.autoconfig.Magehand.option.spawnStuff.spawnWeightE": "^ Spawn Weight"
 }

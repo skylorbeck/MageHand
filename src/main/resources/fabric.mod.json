@@ -27,6 +27,9 @@
     ],
     "main": [
       "website.skylorbeck.magehand.Magehand"
+    ],
+    "modmenu": [
+      "website.skylorbeck.magehand.ModMenuIntegration"
     ]
   },
   "mixins": [

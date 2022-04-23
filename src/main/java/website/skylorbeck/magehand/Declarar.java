@@ -20,7 +20,8 @@ import website.skylorbeck.magehand.item.MageHandSpawner;
 import website.skylorbeck.minecraft.skylorlib.DynamicRecipeLoader;
 
 public class Declarar {
-    public static String MODID = "magehand";
+    public static final String MODID = "magehand";
+    public static HandConfig config = new HandConfig();
 
     public static Identifier getIdentifier(String path) {
         return new Identifier(MODID, path);
