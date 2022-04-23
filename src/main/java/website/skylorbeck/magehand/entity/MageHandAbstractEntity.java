@@ -3,6 +3,7 @@ package website.skylorbeck.magehand.entity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
+import net.minecraft.entity.ai.goal.FleeEntityGoal;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
@@ -15,6 +16,7 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.SwordItem;
 import net.minecraft.nbt.NbtCompound;
@@ -31,6 +33,9 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public abstract class MageHandAbstractEntity extends PathAwareEntity implements IAnimatable {
@@ -109,8 +114,8 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
     @Override
     public void tick() {
         this.goalSelector.getRunningGoals().forEach((goal)-> {
-//            Logger.getGlobal().log(Level.SEVERE,goal.getGoal().toString());
-//            Logger.getGlobal().log(Level.SEVERE,goal.getPriority()+"");
+            Logger.getGlobal().log(Level.SEVERE,goal.getGoal().toString());
+            Logger.getGlobal().log(Level.SEVERE,goal.getPriority()+"");
         });
         if (!isStretching() && this.random.nextFloat()<0.005f) {
             this.dataTracker.set(stretchTicks,50);
