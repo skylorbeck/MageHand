@@ -4,7 +4,6 @@ import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.impl.client.rendering.EntityRendererRegistryImpl;
 import website.skylorbeck.magehand.Declarar;
 import website.skylorbeck.magehand.HandConfig;

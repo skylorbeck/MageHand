@@ -12,17 +12,12 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.Items;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import software.bernie.geckolib3.GeckoLib;
 import website.skylorbeck.magehand.entity.MageHandAbstractEntity;
 import website.skylorbeck.magehand.entity.MageHandIronEntity;
-import website.skylorbeck.minecraft.skylorlib.Declarer;
 import website.skylorbeck.minecraft.skylorlib.DynamicRecipeLoader;
 import website.skylorbeck.minecraft.skylorlib.Registrar;
-
-import java.util.ArrayList;
 
 import static website.skylorbeck.magehand.Declarar.*;
 

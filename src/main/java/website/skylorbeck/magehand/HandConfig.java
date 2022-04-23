@@ -3,13 +3,6 @@ package website.skylorbeck.magehand;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeKeys;
-
-import java.util.ArrayList;
-
-import static website.skylorbeck.magehand.Declarar.MODID;
 
 @Config(name = "Magehand")
 public class HandConfig implements ConfigData {

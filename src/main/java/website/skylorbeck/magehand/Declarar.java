@@ -1,6 +1,5 @@
 package website.skylorbeck.magehand;
 
-import com.google.common.collect.Lists;
 import com.google.gson.JsonObject;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -9,15 +8,12 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import website.skylorbeck.magehand.entity.*;
-import website.skylorbeck.magehand.item.DebugSpawner;
 import website.skylorbeck.magehand.item.MageHandDiamondSpawner;
 import website.skylorbeck.magehand.item.MageHandSpawner;
-import website.skylorbeck.minecraft.skylorlib.DynamicRecipeLoader;
 
 public class Declarar {
     public static final String MODID = "magehand";

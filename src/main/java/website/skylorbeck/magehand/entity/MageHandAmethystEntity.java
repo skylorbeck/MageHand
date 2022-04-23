@@ -8,20 +8,16 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import website.skylorbeck.magehand.Declarar;
 import website.skylorbeck.magehand.entity.goals.MageHandCallForHelpGoal;
 import website.skylorbeck.magehand.entity.goals.MageHandFilteredPickUpItemGoal;
-import website.skylorbeck.magehand.entity.goals.MageHandPickUpItemGoal;
 import website.skylorbeck.magehand.entity.goals.MageHandPutItemInChestGoal;
 
 public class MageHandAmethystEntity extends MageHandFriendlyAbstractEntity {
