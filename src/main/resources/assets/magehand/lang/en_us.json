@@ -8,6 +8,7 @@
   "item.magehand.gold_spawner_item": "Gold Mage Hand",
   "item.magehand.diamond_spawner_item": "Diamond Mage Hand",
   "item.magehand.amethyst_spawner_item": "Amethyst Mage Hand",
+  "item.magehand.wood_spawner_item": "Wood Mage Hand",
   "item.magehand.hand_essence_item": "Mage Hand Essence",
 
   "entity.magehand.hostile": "Hostile Mage Hand",
@@ -16,6 +17,7 @@
   "entity.magehand.gold": "Gold Mage Hand",
   "entity.magehand.diamond": "Diamond Mage Hand",
   "entity.magehand.amethyst": "Amethyst Mage Hand",
+  "entity.magehand.wood": "Wooden Mage Hand",
 
   "text.autoconfig.Magehand.option.maxGroupSize": "Max Group Size",
   "text.autoconfig.Magehand.option.minGroupSize": "Min Group Size",

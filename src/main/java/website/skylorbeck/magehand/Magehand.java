@@ -11,6 +11,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.Items;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.BiomeKeys;
 import software.bernie.geckolib3.GeckoLib;
@@ -77,6 +78,9 @@ public class Magehand implements ModInitializer {
         FabricDefaultAttributeRegistry.register(MAGE_HAND_AMETHYST_ENTITY_TYPE,
                 MageHandAbstractEntity.createMobAttributes());
         Registrar.regItem("amethyst_spawner_", MAGE_HAND_AMETHYST_SPAWNER, MODID);
+        FabricDefaultAttributeRegistry.register(MAGE_HAND_WOOD_ENTITY_TYPE,
+                MageHandAbstractEntity.createMobAttributes());
+        Registrar.regItem("wood_spawner_", MAGE_HAND_WOOD_SPAWNER, MODID);
 
         Registrar.regItem("bone_hand_", MAGE_HAND_BONE_ITEM, MODID);
         Registrar.regItem("flesh_hand_", MAGE_HAND_FLESH_ITEM, MODID);
@@ -129,6 +133,13 @@ public class Magehand implements ModInitializer {
                 Lists.newArrayList(false, false),//type
                 Lists.newArrayList("111", "101", "111"),//pattern
                 Registry.ITEM.getId(MAGE_HAND_AMETHYST_SPAWNER),
+                1
+        );
+        MAGE_HAND_WOOD = DynamicRecipeLoader.createShapedRecipeJson(
+                Lists.newArrayList(Registry.ITEM.getId(MAGE_HAND_FLESH_ITEM), new Identifier("minecraft","planks")),
+                Lists.newArrayList(false, true),//type
+                Lists.newArrayList("111", "101", "111"),//pattern
+                Registry.ITEM.getId(MAGE_HAND_WOOD_SPAWNER),
                 1
         );
     }

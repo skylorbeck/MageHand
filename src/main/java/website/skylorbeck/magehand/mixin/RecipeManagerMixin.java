@@ -33,6 +33,7 @@ public class RecipeManagerMixin {
         createMap.apply(Declarar.MAGE_HAND_GOLD,"mage_hand_gold");
         createMap.apply(Declarar.MAGE_HAND_DIAMOND,"mage_hand_diamond");
         createMap.apply(Declarar.MAGE_HAND_AMETHYST,"mage_hand_amethyst");
+//        createMap.apply(Declarar.MAGE_HAND_WOOD,"mage_hand_wood");
 
     }
 }

@@ -21,5 +21,6 @@ public class MagehandClient implements ClientModInitializer {
         EntityRendererRegistryImpl.register(Declarar.MAGE_HAND_GOLD_ENTITY_TYPE, MageHandRenderer::new);
         EntityRendererRegistryImpl.register(Declarar.MAGE_HAND_DIAMOND_ENTITY_TYPE, MageHandRenderer::new);
         EntityRendererRegistryImpl.register(Declarar.MAGE_HAND_AMETHYST_ENTITY_TYPE, MageHandRenderer::new);
+        EntityRendererRegistryImpl.register(Declarar.MAGE_HAND_WOOD_ENTITY_TYPE, MageHandRenderer::new);
     }
 }
