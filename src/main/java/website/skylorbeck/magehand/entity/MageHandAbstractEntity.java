@@ -112,8 +112,8 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
     @Override
     public void tick() {
         this.goalSelector.getRunningGoals().forEach((goal)-> {
-            Logger.getGlobal().log(Level.SEVERE,goal.getGoal().toString());
-            Logger.getGlobal().log(Level.SEVERE,goal.getPriority()+"");
+//            Logger.getGlobal().log(Level.SEVERE,goal.getGoal().toString());
+//            Logger.getGlobal().log(Level.SEVERE,goal.getPriority()+"");
         });
         if (!isStretching() && this.random.nextFloat()<0.005f) {
             this.dataTracker.set(stretchTicks,50);

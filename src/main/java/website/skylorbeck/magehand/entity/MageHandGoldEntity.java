@@ -11,6 +11,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import website.skylorbeck.magehand.Declarar;
@@ -20,13 +21,11 @@ import website.skylorbeck.magehand.entity.goals.MageHandPlantSeedGoal;
 import website.skylorbeck.magehand.entity.goals.MageHandResupplySeedsGoal;
 
 public class MageHandGoldEntity extends MageHandFriendlyAbstractEntity{
-    public static final Item[] seedables = {
-            Items.POTATO,
-            Items.CARROT,
-            Items.BEETROOT_SEEDS,
-            Items.WHEAT_SEEDS,
-//            Items.MELON_SEEDS,
-//            Items.PUMPKIN_SEEDS,
+    public static Identifier[] seedables = {
+            Registry.ITEM.getId(Items.POTATO),
+            Registry.ITEM.getId(Items.CARROT),
+            Registry.ITEM.getId(Items.BEETROOT_SEEDS),
+            Registry.ITEM.getId(Items.WHEAT_SEEDS),
     };
     public MageHandGoldEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
@@ -53,15 +52,16 @@ public class MageHandGoldEntity extends MageHandFriendlyAbstractEntity{
     @Override
     protected ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
-        for (Item seedable : seedables) {
+        for (Identifier seedable : seedables) {
+            Item seed = Registry.ITEM.get(seedable);
             if (this.getMainHandStack().isEmpty()) {
-                if (itemStack.isOf(seedable)) {
+                if (itemStack.isOf(seed)) {
                     this.equipStack(EquipmentSlot.MAINHAND, itemStack);
                     this.setEquipmentDropChance(EquipmentSlot.MAINHAND, 100f);
                     player.equipStack(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
                 }
             } else {
-                if (itemStack.isOf(seedable)) {
+                if (itemStack.isOf(seed)) {
                     this.dropStack(this.getMainHandStack());
                     this.equipStack(EquipmentSlot.MAINHAND, itemStack);
                     this.setEquipmentDropChance(EquipmentSlot.MAINHAND, 100f);

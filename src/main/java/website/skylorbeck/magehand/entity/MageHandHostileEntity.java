@@ -6,8 +6,11 @@ import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import website.skylorbeck.magehand.Declarar;
 import website.skylorbeck.magehand.entity.goals.MageHandAttackGoal;
 
@@ -44,6 +47,12 @@ public class MageHandHostileEntity extends MageHandAbstractEntity{
     @Override
     public Identifier getTexture() {
         return Declarar.getIdentifier("textures/hand.png");
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.ENTITY_PARROT_FLY;
     }
 }
 

@@ -4,7 +4,7 @@ import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
-@Config(name = "Magehand")
+@Config(name = "Magehand/Magehand")
 public class HandConfig implements ConfigData {
 
     @ConfigEntry.BoundedDiscrete(min = 1, max = 4)

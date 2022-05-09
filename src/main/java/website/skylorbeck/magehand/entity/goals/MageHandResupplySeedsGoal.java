@@ -13,7 +13,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.WorldView;
 import website.skylorbeck.magehand.entity.MageHandAbstractEntity;
 import website.skylorbeck.magehand.entity.MageHandGoldEntity;
@@ -68,8 +70,9 @@ extends MoveToTargetPosGoal {
                         if (blockEntity instanceof Inventory inventory) {
                             int sidedInventory = ((Inventory) blockEntity).size();
                             for (int is = 0; is < sidedInventory && itemStack.isEmpty(); ++is) {
-                                for (Item seedable : MageHandGoldEntity.seedables) {
-                                    if (inventory.getStack(is).isOf(seedable)) {
+                                for (Identifier seedable : MageHandGoldEntity.seedables) {
+                                    Item seed = Registry.ITEM.get(seedable);
+                                    if (inventory.getStack(is).isOf(seed)) {
                                         itemStack = inventory.getStack(is);
                                         magehand.equipStack(EquipmentSlot.MAINHAND, itemStack);
                                         inventory.setStack(is, ItemStack.EMPTY);

@@ -15,7 +15,9 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.BiomeKeys;
 import software.bernie.geckolib3.GeckoLib;
 import website.skylorbeck.magehand.entity.MageHandAbstractEntity;
+import website.skylorbeck.magehand.entity.MageHandGoldEntity;
 import website.skylorbeck.magehand.entity.MageHandIronEntity;
+import website.skylorbeck.minecraft.skylorlib.ConfigFileHandler;
 import website.skylorbeck.minecraft.skylorlib.DynamicRecipeLoader;
 import website.skylorbeck.minecraft.skylorlib.Registrar;
 
@@ -51,6 +53,8 @@ public class Magehand implements ModInitializer {
         if (config.spawnStuff.soul_valley){
             BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.SOUL_SAND_VALLEY), SpawnGroup.MONSTER, MAGE_HAND_HOSTILE_ENTITY_TYPE, config.spawnStuff.spawnWeightE, config.minGroupSize, config.maxGroupSize);
         }
+
+        MageHandGoldEntity.seedables = ConfigFileHandler.initConfigFile("Magehand/Seeds.json",MageHandGoldEntity.seedables);
 
         Registrar.regItem("hostile_spawner_", MAGE_HAND_HOSTILE_SPAWNER, MODID);
 
