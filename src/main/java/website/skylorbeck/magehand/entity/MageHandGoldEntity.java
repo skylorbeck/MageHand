@@ -3,11 +3,15 @@ package website.skylorbeck.magehand.entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -15,10 +19,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import website.skylorbeck.magehand.Declarar;
-import website.skylorbeck.magehand.entity.goals.MageHandCallForHelpGoal;
-import website.skylorbeck.magehand.entity.goals.MageHandHarvestPlantGoal;
-import website.skylorbeck.magehand.entity.goals.MageHandPlantSeedGoal;
-import website.skylorbeck.magehand.entity.goals.MageHandResupplySeedsGoal;
+import website.skylorbeck.magehand.entity.goals.*;
 
 public class MageHandGoldEntity extends MageHandFriendlyAbstractEntity{
     public static Identifier[] seedables = {
@@ -36,6 +37,7 @@ public class MageHandGoldEntity extends MageHandFriendlyAbstractEntity{
         this.goalSelector.add(1,new MageHandHarvestPlantGoal(this,1,16));
         this.goalSelector.add(2,new MageHandResupplySeedsGoal(this,1,16));
         this.goalSelector.add(3,new MageHandPlantSeedGoal(this,1,16));
+        this.goalSelector.add(4,new MageHandUseBoneMealGoal(this,1,16));
         this.targetSelector.add(1, new MageHandCallForHelpGoal(this).setGroupRevenge(MageHandDiamondEntity.class,MageHandCopperEntity.class,MageHandGoldEntity.class,MageHandHostileEntity.class));
         super.initGoals();
     }
@@ -66,11 +68,20 @@ public class MageHandGoldEntity extends MageHandFriendlyAbstractEntity{
                     this.equipStack(EquipmentSlot.MAINHAND, itemStack);
                     this.setEquipmentDropChance(EquipmentSlot.MAINHAND, 100f);
                     player.equipStack(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
-                } else if (itemStack.isEmpty() && player.isSneaking()) {
-                    this.dropStack(this.getMainHandStack());
-                    this.equipStack(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
                 }
             }
+        }
+        if (itemStack.isOf(Items.BONE_MEAL)) {
+            if (this.getOffHandStack().isEmpty()) {
+                this.equipStack(EquipmentSlot.OFFHAND, itemStack);
+                this.setEquipmentDropChance(EquipmentSlot.OFFHAND, 100f);
+                player.equipStack(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
+            }
+        } else if (itemStack.isEmpty() && player.isSneaking()) {
+            this.dropStack(this.getMainHandStack());
+            this.dropStack(this.getOffHandStack());
+            this.equipStack(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
+            this.equipStack(EquipmentSlot.OFFHAND, ItemStack.EMPTY);
         }
         return super.interactMob(player, hand);
     }

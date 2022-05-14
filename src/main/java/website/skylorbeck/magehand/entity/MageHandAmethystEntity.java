@@ -21,7 +21,7 @@ import website.skylorbeck.magehand.entity.goals.MageHandFilteredPickUpItemGoal;
 import website.skylorbeck.magehand.entity.goals.MageHandPutItemInChestGoal;
 
 public class MageHandAmethystEntity extends MageHandFriendlyAbstractEntity {
-    private static final TrackedData<Boolean> filterMode = DataTracker.registerData(MageHandAbstractEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Boolean> filterMode = DataTracker.registerData(MageHandAmethystEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
 
     public MageHandAmethystEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
