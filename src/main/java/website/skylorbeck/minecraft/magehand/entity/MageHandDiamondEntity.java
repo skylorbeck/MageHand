@@ -1,17 +1,11 @@
-package website.skylorbeck.magehand.entity;
+package website.skylorbeck.minecraft.magehand.entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.SwordItem;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -21,7 +15,8 @@ import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import website.skylorbeck.magehand.Declarar;
+import website.skylorbeck.minecraft.magehand.Declarar;
+import website.skylorbeck.minecraft.magehand.entity.goals.MageHandLookAtBlockGoal;
 
 public class MageHandDiamondEntity extends MageHandFriendlyAbstractEntity {
     private Block[] targetBlock = new Block[]{Blocks.DIAMOND_ORE,Blocks.DEEPSLATE_DIAMOND_ORE};

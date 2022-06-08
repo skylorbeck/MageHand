@@ -19,24 +19,17 @@ repositories {
 }
 
 dependencies {
-    // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
-    // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "website.skylorbeck.minecraft:SkylorLib:${project.skylib_version}"
+    modImplementation "software.bernie.geckolib:geckolib-fabric-1.19:${project.geckolib_version}"
+    modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}") {exclude(group: "net.fabricmc.fabric-api")}
     modRuntimeOnly "com.terraformersmc:modmenu:${project.mod_menu_version}"
-    modImplementation "software.bernie.geckolib:geckolib-fabric-1.18:${project.geckolib_version}"
-    modImplementation ("website.skylorbeck.minecraft:SkylorLib:$skylib_version")
-    modApi("com.terraformersmc:modmenu:${project.mod_menu_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-    modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
+//    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
+//    modRuntimeOnly "mcp.mobius.waila:wthit:fabric-${wthit_version}"
 }
-
 processResources {
     inputs.property "version", project.version
     filteringCharset "UTF-8"
