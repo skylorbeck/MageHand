@@ -57,12 +57,13 @@ public class MageHandDiamondSpawner extends SpawnEggItem {
             user.sendMessage(Text.of("Target: " + currentTarget.name()), true);
             return TypedActionResult.pass(user.getStackInHand(hand));
         }
-        return super.use(world, user, hand);
+        return TypedActionResult.pass(user.getStackInHand(hand));
+//        return super.use(world, user, hand);
     }
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
-        if (context.getPlayer().isSneaking()){
+        if (context.getPlayer() != null && context.getPlayer().isSneaking()) {
             return ActionResult.PASS;
         }
         Object blockEntity;

@@ -70,7 +70,11 @@ public abstract class MageHandAbstractEntity extends PathAwareEntity implements 
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0f));
+        try {
+            this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0f));
+        } catch (IllegalStateException e) {
+            //ignore
+        }
         this.goalSelector.add(8, new LookAroundGoal(this));
         super.initGoals();
     }
